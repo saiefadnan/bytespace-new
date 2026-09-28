@@ -1,1 +1,161 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-sans: 'Satoshi', 'Poppins', system-ui, sans-serif;
+
+  /* Figma Palette - Royal Blues */
+  --color-blue-50: #E7F6FF;
+  --color-blue-100: #D3EEFF;
+  --color-blue-200: #B0DDFF;
+  --color-blue-300: #81C5FF;
+  --color-blue-400: #4F9DFF;
+  --color-blue-500: #2872FF;
+  --color-blue-600: #0445FF;
+  --color-blue-700: #0043FF;
+  --color-blue-800: #003BE2;
+  --color-blue-900: #0B36A4;
+  --color-blue-950: #071E5F;
+
+  /* Figma Palette - Electric Limes */
+  --color-lime-50: #FDFFE4;
+  --color-lime-100: #FAFFC5;
+  --color-lime-200: #F2FF92;
+  --color-lime-300: #E4FF54;
+  --color-lime-400: #D4FB20;
+  --color-lime-500: #CBFC01;
+  --color-lime-600: #8CB400;
+  --color-lime-700: #6A8902;
+  --color-lime-800: #546B09;
+  --color-lime-900: #465A0D;
+  --color-lime-950: #243300;
+
+  /* Figma Palette - Neutrals */
+  --color-neutral-50: #F5F5F6;
+  --color-neutral-100: #E5E6E8;
+  --color-neutral-200: #CED0D3;
+  --color-neutral-300: #ABAEB5;
+  --color-neutral-400: #82868E;
+  --color-neutral-500: #666973;
+  --color-neutral-600: #585A62;
+  --color-neutral-700: #4B4C53;
+  --color-neutral-800: #424348;
+  --color-neutral-900: #3A3B3F;
+  --color-neutral-950: #242528;
+}
+
+:root {
+  /* Brand Tokens */
+  --primary: #003BE2;
+  --primary-hover: #0445FF;
+  --accent: #CBFC01;
+  --accent-hover: #D4FB20;
+  --accent-text: #172400;
+
+  /* Surfaces & Borders */
+  --surface: #FFFFFF;
+  --bg-page: #FAFAFA;
+  --border: #CED0D3;
+  --border-light: #E5E6E8;
+
+  /* Text Colors */
+  --text-main: #242528;
+  --text-muted: #585A62;
+  --text-subtle: #82868E;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  color: var(--text-main);
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* 12-Column Figma Max Container */
+.bytespace-container {
+  width: 100%;
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* Reusable UI Utility Classes */
+.btn-lime {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(203, 252, 1, 0.35);
+}
+
+.btn-lime:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px rgba(203, 252, 1, 0.5);
+}
+
+.btn-lime:active {
+  transform: translateY(0);
+}
+
+.btn-white {
+  background-color: #FFFFFF;
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-white:hover {
+  background-color: #F5F5F6;
+  transform: translateY(-1px);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-white:hover {
+  border-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Course Card Animation */
+.course-card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 59, 226, 0.12), 0 0 0 1px rgba(0, 59, 226, 0.08);
+}
