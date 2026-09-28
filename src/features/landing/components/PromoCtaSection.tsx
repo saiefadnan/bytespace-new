@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from '../../../components/common/Button';
 import doodleShape from '../../../assets/images/doodle-shape-2.png';
+import doodleSpring from '../../../assets/images/doodle-spring-2.png';
+import doodleShape3 from '../../../assets/images/doodle-shape-3.png';
 
 export interface PromoCtaSectionProps {
   onCtaClick?: () => void;
@@ -8,51 +9,48 @@ export interface PromoCtaSectionProps {
 
 export const PromoCtaSection: React.FC<PromoCtaSectionProps> = ({ onCtaClick }) => {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <div className="bytespace-container">
-        <div className="relative rounded-3xl bg-[#003BE2] text-white p-8 sm:p-14 lg:p-16 overflow-hidden shadow-2xl">
-          {/* Ambient Lighting */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#2554FF] rounded-full blur-3xl opacity-40 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#CBFC01] rounded-full blur-3xl opacity-15 pointer-events-none" />
+    <section className="relative bg-[#003BE2] text-white py-20 sm:py-24 overflow-hidden">
+      {/* Decorative 3D Doodles from Figma */}
+      <img
+        src={doodleSpring}
+        alt=""
+        aria-hidden="true"
+        className="hidden md:block absolute -left-12 top-10 w-44 lg:w-56 opacity-85 select-none pointer-events-none"
+      />
+      <img
+        src={doodleShape}
+        alt=""
+        aria-hidden="true"
+        className="hidden md:block absolute -right-12 bottom-6 w-48 lg:w-60 opacity-85 select-none pointer-events-none"
+      />
+      <img
+        src={doodleShape3}
+        alt=""
+        aria-hidden="true"
+        className="hidden lg:block absolute right-1/4 -top-12 w-32 opacity-40 select-none pointer-events-none"
+      />
 
-          {/* 3D Floating Vector Asset from Figma */}
-          <img
-            src={doodleShape}
-            alt=""
-            aria-hidden="true"
-            className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 w-48 lg:w-64 opacity-80 pointer-events-none select-none"
-          />
+      {/* Ambient Lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#2554FF]/40 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-xl space-y-6">
-            <span className="inline-block bg-[#CBFC01] text-[#172400] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm">
-              Limited Intake Open
-            </span>
+      <div className="bytespace-container relative z-10 text-center max-w-3xl mx-auto space-y-6">
+        <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[3.25rem] tracking-tight leading-[1.15]">
+          Unlock Your Potential as a <br />
+          <span className="text-[#D4FB20]">Creator with ByteSpace</span>
+        </h2>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
-              Ready to accelerate your tech career?
-            </h2>
+        <p className="text-white/85 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Experience the collaboration of numerous creators and an expanding selection of courses. Join us in shaping a thriving learning space.
+        </p>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-              Join over 25,000+ ambitious learners worldwide. Start learning from industry masters today and turn your curiosity into career mastery.
-            </p>
-
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <Button
-                variant="lime"
-                size="lg"
-                onClick={onCtaClick}
-                className="px-8 py-4 font-bold shadow-xl shadow-black/20 text-xs sm:text-sm cursor-pointer"
-              >
-                Claim Free 7-Day Trial
-              </Button>
-              <a
-                href="#courses"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-full text-white/90 hover:text-white font-semibold text-xs sm:text-sm bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                View Catalog →
-              </a>
-            </div>
-          </div>
+        <div className="pt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={onCtaClick}
+            className="bg-[#D4FB20] text-[#172400] hover:bg-[#CBFC01] transition-all px-9 py-4 rounded-full font-bold text-sm md:text-base shadow-xl hover:shadow-2xl cursor-pointer active:scale-95"
+          >
+            Join as Creator
+          </button>
         </div>
       </div>
     </section>

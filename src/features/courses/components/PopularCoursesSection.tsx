@@ -43,16 +43,14 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
   return (
     <section id="courses" className="bg-white py-20 sm:py-28 border-b border-[#E5E6E8]">
       <div className="bytespace-container">
-        {/* Section Header */}
+        {/* Section Header matching Figma */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block bg-[#E7F6FF] text-[#003BE2] border border-[#B0DDFF] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3">
-            Top Rated Masterclasses
-          </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#242528] tracking-tight mb-3">
-            Explore Our Popular Courses Available
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] text-[#242528] tracking-tight leading-[1.2] mb-4">
+            Discover Your Passion, <br className="hidden sm:inline" />
+            <span className="text-[#003BE2]">Build Your Skills</span>
           </h2>
           <p className="text-[#585A62] text-sm sm:text-base leading-relaxed">
-            Curated hands-on masterclasses designed to turn aspiring designers and engineers into seasoned professionals.
+            At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different fields, from technology to the arts, and make a difference in your career and life.
           </p>
         </div>
 
