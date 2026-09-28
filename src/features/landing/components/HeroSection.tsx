@@ -200,7 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="text-[11px] sm:text-xs text-[#585A62] font-semibold">
               Learning Progress
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-[#242528] tracking-tight my-1">
+            <div className="text-2xl sm:text-5xl font-extrabold text-[#242528] tracking-tight my-1">
               55%
             </div>
             <div className="w-full h-2 rounded-full bg-[#F5F5F6] overflow-hidden mt-1">
