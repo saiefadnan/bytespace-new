@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ByteSpaceLogo } from './ByteSpaceLogo';
 import { Button } from './Button';
 
@@ -13,6 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenSignup,
   isTransparent = true,
 }) => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -24,12 +26,28 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleSignInClick = () => {
+    if (onOpenLogin) {
+      onOpenLogin();
+    } else {
+      navigate('/login');
+    }
+  };
+
+  const handleGetStartedClick = () => {
+    if (onOpenSignup) {
+      onOpenSignup();
+    } else {
+      navigate('/signup');
+    }
+  };
+
   const navLinks = [
-    { label: 'Home', href: '#' },
-    { label: 'Courses', href: '#courses' },
-    { label: 'Why Us', href: '#features' },
-    { label: 'Mentors', href: '#mentors' },
-    { label: 'Reviews', href: '#testimonials' },
+    { label: 'Home', href: '/' },
+    { label: 'Courses', href: '/#courses' },
+    { label: 'Why Us', href: '/#features' },
+    { label: 'Mentors', href: '/#mentors' },
+    { label: 'Reviews', href: '/#testimonials' },
   ];
 
   return (
@@ -44,9 +62,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="bytespace-container flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center group">
+        <Link to="/" className="flex items-center group">
           <ByteSpaceLogo theme="light" size="md" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
@@ -64,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Action Buttons (Sign In / Register) */}
         <div className="hidden sm:flex items-center gap-3.5">
           <button
-            onClick={onOpenLogin}
+            onClick={handleSignInClick}
             className="text-white hover:text-[#CBFC01] font-semibold text-sm px-4 py-2 transition-colors cursor-pointer"
           >
             Sign In
@@ -72,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Button
             variant="lime"
             size="sm"
-            onClick={onOpenSignup}
+            onClick={handleGetStartedClick}
             className="px-5 py-2 font-bold text-xs"
           >
             Get Started
@@ -114,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenLogin?.();
+                handleSignInClick();
               }}
               className="text-white font-semibold text-sm py-2 text-left"
             >
@@ -126,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               fullWidth
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenSignup?.();
+                handleGetStartedClick();
               }}
             >
               Get Started
