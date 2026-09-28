@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Course } from '../types';
 import { Badge } from '../../../components/common/Badge';
 
@@ -8,11 +9,20 @@ export interface CourseCardProps {
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
+  const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
+
+  const handleClick = () => {
+    if (onSelect) {
+      onSelect(course);
+    } else {
+      navigate(`/course/${course.id}`);
+    }
+  };
 
   return (
     <article
-      onClick={() => onSelect?.(course)}
+      onClick={handleClick}
       className="course-card-hover group bg-white border border-[#E5E6E8] rounded-2xl overflow-hidden flex flex-col cursor-pointer"
     >
       {/* Thumbnail with Badge & Bookmark */}

@@ -4,6 +4,7 @@ import { HomePage } from '../pages/home';
 import { LoginPage, SignupPage } from '../pages/auth';
 import { SearchPage } from '../pages/search';
 import { CreatorProfilePage } from '../pages/creator';
+import { CourseDetailsPage } from '../pages/course';
 import { NotFoundPage } from '../pages/notfound';
 
 export const AppRoutes: React.FC = () => {
@@ -11,6 +12,7 @@ export const AppRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/search" element={<SearchPage />} />
+      <Route path="/course/:id" element={<CourseDetailsPage />} />
       <Route path="/creator" element={<CreatorProfilePage />} />
       <Route path="/creator/:id" element={<CreatorProfilePage />} />
       <Route path="/login" element={<LoginPage />} />
