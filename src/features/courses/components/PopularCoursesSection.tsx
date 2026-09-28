@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Course, Category } from '../types';
 import { CourseCard } from './CourseCard';
 import { Button } from '../../../components/common/Button';
@@ -18,34 +19,54 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
   onSelectCategory,
   onSelectCourse,
 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const pageSize = 6;
+
   const filteredCourses = activeCategory === 'all'
     ? courses
     : courses.filter((c) => c.category === activeCategory);
 
+  const totalPages = Math.ceil(filteredCourses.length / pageSize) || 1;
+  const displayedCourses = filteredCourses.slice(
+    currentPage * pageSize,
+    (currentPage + 1) * pageSize
+  );
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
+  };
+
   return (
-    <section id="courses" className="bg-[#FAFAFA] py-20 sm:py-28 border-b border-[#E5E6E8]">
+    <section id="courses" className="bg-white py-20 sm:py-28 border-b border-[#E5E6E8]">
       <div className="bytespace-container">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block bg-[#E7F6FF] text-[#003BE2] border border-[#B0DDFF] text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-3">
-            Top Rated
+          <span className="inline-block bg-[#E7F6FF] text-[#003BE2] border border-[#B0DDFF] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3">
+            Top Rated Masterclasses
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#242528] tracking-tight mb-3">
-            Popular Courses We Offer
+            Explore Our Popular Courses Available
           </h2>
           <p className="text-[#585A62] text-sm sm:text-base leading-relaxed">
             Curated hands-on masterclasses designed to turn aspiring designers and engineers into seasoned professionals.
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        {/* Category Filter Tabs (Figma Lime Active Pill) */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
           <button
-            onClick={() => onSelectCategory('all')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-150 cursor-pointer ${
+            onClick={() => {
+              onSelectCategory('all');
+              setCurrentPage(0);
+            }}
+            className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
               activeCategory === 'all'
-                ? 'bg-[#003BE2] text-white shadow-md shadow-[#003BE2]/20'
-                : 'bg-white text-[#585A62] border border-[#CED0D3] hover:border-[#003BE2] hover:text-[#003BE2]'
+                ? 'bg-[#D4FB20] text-[#172400] shadow-md shadow-[#D4FB20]/30 scale-105'
+                : 'bg-[#F5F5F6] text-[#585A62] hover:bg-[#E5E6E8] hover:text-[#242528]'
             }`}
           >
             All Courses
@@ -55,11 +76,14 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
             return (
               <button
                 key={category.id}
-                onClick={() => onSelectCategory(category.slug)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-150 cursor-pointer ${
+                onClick={() => {
+                  onSelectCategory(category.slug);
+                  setCurrentPage(0);
+                }}
+                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#003BE2] text-white shadow-md shadow-[#003BE2]/20'
-                    : 'bg-white text-[#585A62] border border-[#CED0D3] hover:border-[#003BE2] hover:text-[#003BE2]'
+                    ? 'bg-[#D4FB20] text-[#172400] shadow-md shadow-[#D4FB20]/30 scale-105'
+                    : 'bg-[#F5F5F6] text-[#585A62] hover:bg-[#E5E6E8] hover:text-[#242528]'
                 }`}
               >
                 {category.name}
@@ -68,9 +92,9 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
           })}
         </div>
 
-        {/* Courses Grid */}
+        {/* Courses Grid: 3 columns x 2 rows (6 cards matching Figma) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredCourses.map((course) => (
+          {displayedCourses.map((course) => (
             <CourseCard
               key={course.id}
               course={course}
@@ -79,17 +103,41 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
           ))}
         </div>
 
-        {/* Bottom CTA to view all */}
-        <div className="text-center">
-          <a href="/search">
+        {/* Pagination & Explore All CTA matching Figma's 60px circular arrows */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-[#F5F5F6]">
+          {/* Results count indicator */}
+          <div className="text-xs text-[#82868E] font-medium">
+            Showing <span className="font-bold text-[#242528]">{displayedCourses.length}</span> of {filteredCourses.length} courses
+          </div>
+
+          {/* Carousel Arrows */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handlePrevPage}
+              className="w-12 h-12 rounded-full bg-[#F5F5F6] hover:bg-[#E5E6E8] text-[#242528] flex items-center justify-center font-bold text-lg transition-colors cursor-pointer"
+              aria-label="Previous courses"
+            >
+              ←
+            </button>
+            <button
+              onClick={handleNextPage}
+              className="w-12 h-12 rounded-full bg-[#D4FB20] hover:bg-[#CBFC01] text-[#172400] flex items-center justify-center font-bold text-lg shadow-md transition-colors cursor-pointer"
+              aria-label="Next courses"
+            >
+              →
+            </button>
+          </div>
+
+          {/* View All Button */}
+          <Link to="/search">
             <Button
               variant="outline-dark"
-              size="lg"
-              className="px-8 font-bold text-xs"
+              size="md"
+              className="px-6 font-bold text-xs"
             >
-              Explore All Courses ({courses.length}+)
+              Explore All Courses ({courses.length}+) →
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
