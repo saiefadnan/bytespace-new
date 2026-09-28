@@ -40,6 +40,10 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
     setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
   };
 
+  const categoryList = categories.some((c) => c.slug === 'all')
+    ? categories
+    : [{ id: 'all', name: 'All Courses', slug: 'all', count: courses.length }, ...categories];
+
   return (
     <section id="courses" className="bg-white py-20 sm:py-28 border-b border-[#E5E6E8]">
       <div className="bytespace-container">
@@ -56,20 +60,7 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
 
         {/* Category Filter Tabs (Figma Lime Active Pill) */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
-          <button
-            onClick={() => {
-              onSelectCategory('all');
-              setCurrentPage(0);
-            }}
-            className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
-              activeCategory === 'all'
-                ? 'bg-[#D4FB20] text-[#172400] shadow-md shadow-[#D4FB20]/30 scale-105'
-                : 'bg-[#F5F5F6] text-[#585A62] hover:bg-[#E5E6E8] hover:text-[#242528]'
-            }`}
-          >
-            All Courses
-          </button>
-          {categories.map((category) => {
+          {categoryList.map((category) => {
             const isActive = activeCategory === category.slug;
             return (
               <button
