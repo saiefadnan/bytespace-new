@@ -3,6 +3,7 @@ import { HomePage } from './pages/home';
 import { LoginPage, SignupPage } from './pages/auth';
 import { NotFoundPage } from './pages/notfound';
 import { SearchPage } from './pages/search';
+import { CreatorProfilePage } from './pages/creator';
 import { ScrollToTop } from './components/common/ScrollToTop';
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/creator" element={<CreatorProfilePage />} />
+        <Route path="/creator/:id" element={<CreatorProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/register" element={<SignupPage />} />

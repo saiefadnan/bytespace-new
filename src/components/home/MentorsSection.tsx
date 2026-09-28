@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { mockMentors } from '../../data';
 
 export const MentorsSection: React.FC = () => {
@@ -21,9 +22,10 @@ export const MentorsSection: React.FC = () => {
         {/* Mentors Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {mockMentors.map((mentor) => (
-            <div
+            <Link
               key={mentor.id}
-              className="bg-white border border-[#E5E6E8] rounded-2xl p-6 text-center hover:-translate-y-1.5 hover:shadow-xl transition-all duration-200 flex flex-col items-center"
+              to={`/creator/${mentor.id}`}
+              className="bg-white border border-[#E5E6E8] rounded-2xl p-6 text-center hover:-translate-y-1.5 hover:shadow-xl transition-all duration-200 flex flex-col items-center group cursor-pointer"
             >
               {/* Avatar with Ring */}
               <div className="relative mb-4">
@@ -53,7 +55,7 @@ export const MentorsSection: React.FC = () => {
                 <span>Students</span>
                 <span className="font-bold text-[#242528]">{mentor.studentsCount}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
