@@ -57,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         src={doodleSpringLeft}
         alt=""
         aria-hidden="true"
-        className="absolute left-8 sm:left-24 md:left-40 top-[440px] w-20 sm:w-28 md:w-36 select-none pointer-events-none z-10 drop-shadow-xl"
+        className="absolute left-8 sm:left-24 md:left-40 top-[440px] w-20 sm:w-28 md:w-36 select-none pointer-events-none z-10 drop-shadow-xl filter brightness-[1.65] contrast-[1.08]"
       />
 
       {/* Bottom-Left: White 3D Torus Donut */}
@@ -65,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         src={doodleTorusLeft}
         alt=""
         aria-hidden="true"
-        className="absolute left-2 sm:left-12 bottom-12 w-32 sm:w-44 md:w-56 select-none pointer-events-none z-10 drop-shadow-2xl"
+        className="absolute left-2 sm:left-12 bottom-12 w-32 sm:w-44 md:w-56 select-none pointer-events-none z-10 drop-shadow-2xl filter brightness-[1.65] contrast-[1.08]"
       />
 
       {/* Top-Right: Lime 3D Cylinder / Cone */}
@@ -81,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         src={doodlePyramidRight}
         alt=""
         aria-hidden="true"
-        className="absolute right-12 sm:right-28 md:right-44 top-[430px] w-20 sm:w-28 md:w-36 select-none pointer-events-none z-10 drop-shadow-xl"
+        className="absolute right-12 sm:right-28 md:right-44 top-[430px] w-20 sm:w-28 md:w-36 select-none pointer-events-none z-10 drop-shadow-xl filter brightness-[1.65] contrast-[1.08]"
       />
 
       {/* Bottom-Right: White 3D Spring */}
@@ -89,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         src={doodleSpringRight}
         alt=""
         aria-hidden="true"
-        className="absolute right-2 sm:right-10 bottom-8 w-32 sm:w-44 md:w-56 select-none pointer-events-none z-10 drop-shadow-2xl"
+        className="absolute right-2 sm:right-10 bottom-8 w-32 sm:w-44 md:w-56 select-none pointer-events-none z-10 drop-shadow-2xl filter brightness-[1.65] contrast-[1.08]"
       />
 
       {/* 3. Header Text & Search Content */}
