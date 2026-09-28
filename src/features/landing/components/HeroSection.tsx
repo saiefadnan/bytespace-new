@@ -43,13 +43,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         }}
       />
 
+      {/* SVG Color Tint Filter for Lemon Doodles */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+        <filter id="lemon-doodle">
+          <feColorMatrix
+            type="matrix"
+            values="
+              1.10 0 0 0 0
+              1.30 0 0 0 0
+              0.16 0 0 0 0
+              0    0 0 1 0"
+          />
+        </filter>
+      </svg>
+
       {/* 2. Floating 3D Objects Directly Extracted from Figma (positioned exactly) */}
-      {/* Top-Left: Lime Spring Spiral */}
+      {/* Top-Left: Lemon Spring Spiral (Exact Figma: x=-121.58, y=221, w=386.79, h=386.79) */}
       <img
         src={doodleLimeSpiral}
         alt=""
         aria-hidden="true"
-        className="absolute -left-10 sm:-left-6 top-36 w-36 sm:w-56 md:w-64 select-none pointer-events-none z-10 drop-shadow-xl"
+        style={{ filter: 'url(#lemon-doodle)' }}
+        className="absolute -left-12 sm:-left-20 lg:-left-[122px] top-24 sm:top-32 lg:top-[221px] w-52 sm:w-72 lg:w-[387px] lg:h-[387px] select-none pointer-events-none z-10 drop-shadow-2xl"
       />
 
       {/* Mid-Left: White 3D Spring */}
@@ -68,12 +83,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         className="absolute left-2 sm:left-12 bottom-12 w-32 sm:w-44 md:w-56 select-none pointer-events-none z-10 drop-shadow-2xl filter brightness-[1.65] contrast-[1.08]"
       />
 
-      {/* Top-Right: Lime 3D Cylinder / Cone */}
+      {/* Top-Right: Lemon 3D Cylinder / Cone (Exact Figma: x=1227.11, y=220.2, w=371.82, h=371.83) */}
       <img
         src={doodleLimeCylinder}
         alt=""
         aria-hidden="true"
-        className="absolute -right-8 sm:-right-4 top-36 w-36 sm:w-56 md:w-64 select-none pointer-events-none z-10 drop-shadow-xl"
+        style={{ filter: 'url(#lemon-doodle)' }}
+        className="absolute -right-12 sm:-right-20 lg:-right-[159px] top-24 sm:top-32 lg:top-[220px] w-48 sm:w-64 lg:w-[372px] lg:h-[372px] select-none pointer-events-none z-10 drop-shadow-2xl"
       />
 
       {/* Mid-Right: White 3D Pyramid Cone */}
