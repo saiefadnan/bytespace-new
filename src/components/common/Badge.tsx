@@ -4,6 +4,7 @@ export interface BadgeProps {
   children: React.ReactNode;
   variant?: 'lime' | 'blue' | 'gray' | 'white';
   size?: 'sm' | 'md';
+  pill?: boolean;
   className?: string;
 }
 

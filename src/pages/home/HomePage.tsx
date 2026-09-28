@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
-import { HeroSection } from '../../components/home/HeroSection';
-import { PartnersStrip } from '../../components/home/PartnersStrip';
-import { PopularCoursesSection } from '../../components/home/PopularCoursesSection';
-import { FeaturesSection } from '../../components/home/FeaturesSection';
-import { MentorsSection } from '../../components/home/MentorsSection';
-import { TestimonialsSection } from '../../components/home/TestimonialsSection';
-import { PromoCtaSection } from '../../components/home/PromoCtaSection';
-import { CourseDetailsModal } from '../../components/courses/CourseDetailsModal';
-import { AuthModal } from '../../components/auth/AuthModal';
+import {
+  HeroSection,
+  PartnersStrip,
+  FeaturesSection,
+  PromoCtaSection,
+  TestimonialsSection,
+} from '../../features/landing';
+import { PopularCoursesSection, CourseDetailsModal } from '../../features/courses';
+import { MentorsSection } from '../../features/creators';
+import { AuthModal } from '../../features/auth';
 import { mockCourses, mockCategories } from '../../data';
 import type { Course } from '../../types';
 
