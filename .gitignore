@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Figma raw export dumps (keep locally, exclude from git history)
+src/assets/figma/
+src/assets/figma_extracted/
