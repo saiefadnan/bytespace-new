@@ -3,8 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
 import { Button } from '../../components/common/Button';
-import { CourseCard } from '../../components/courses/CourseCard';
-import { CourseDetailsModal } from '../../components/courses/CourseDetailsModal';
+import { CourseCard, CourseDetailsModal } from '../../features/courses';
 import { mockMentors, mockCourses } from '../../data';
 import type { Course } from '../../types';
 

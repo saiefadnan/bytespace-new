@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { mockMentors } from '../../data';
+import { mockMentors } from '../../../data';
 
 export const MentorsSection: React.FC = () => {
   return (
@@ -40,7 +40,7 @@ export const MentorsSection: React.FC = () => {
               </div>
 
               {/* Name & Role */}
-              <h3 className="font-display font-bold text-base text-[#242528] mb-1">
+              <h3 className="font-display font-bold text-base text-[#242528] mb-1 group-hover:text-[#003BE2] transition-colors">
                 {mentor.name}
               </h3>
               <p className="text-xs text-[#003BE2] font-semibold mb-2">
