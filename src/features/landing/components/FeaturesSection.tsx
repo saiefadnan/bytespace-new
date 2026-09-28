@@ -12,7 +12,7 @@ export const FeaturesSection: React.FC = () => {
         {/* ========================================================= */}
         {/* SHOWCASE 1: Professional Growth (Left Text, Right Visual) */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
           {/* Left Column: Headlines & Metrics */}
           <div className="lg:col-span-7 space-y-6">
             <span className="inline-block bg-[#E7F6FF] text-[#003BE2] border border-[#B0DDFF] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
@@ -88,7 +88,7 @@ export const FeaturesSection: React.FC = () => {
         {/* ========================================================= */}
         {/* SHOWCASE 2: Course Creation & Monetization (Left Visual, Right Text) */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-16 border-t border-[#E5E6E8]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center pt-16 border-t border-[#E5E6E8]">
           {/* Left Column: Visual with Creator Student & Floating Revenue Badges */}
           <div className="lg:col-span-5 relative order-2 lg:order-1 flex justify-center">
             <div className="relative mx-auto w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E6E8] shadow-2xl overflow-visible">

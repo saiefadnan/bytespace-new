@@ -35,7 +35,7 @@ export const TestimonialsSection: React.FC = () => {
     <section id="testimonials" className="bg-[#FAFAFA] py-20 sm:py-28 border-b border-[#E5E6E8]">
       <div className="bytespace-container">
         {/* Section Header: Exact Figma Two-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-[40px] items-end mb-14">
           <div className="lg:col-span-6">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] text-[#242528] tracking-tight leading-[1.2]">
               Discover What Our Community <br />
@@ -49,8 +49,8 @@ export const TestimonialsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Testimonials Grid: 3 cards matching Figma 374px width */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Testimonials Grid: 3 cards spanning 4 columns each with 40px gutter */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
           {testimonials.map((t, idx) => (
             <div
               key={idx}
