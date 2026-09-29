@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ByteSpaceLogo } from './ByteSpaceLogo';
 
 export interface NavbarProps {
@@ -9,11 +9,8 @@ export interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onOpenLogin,
-  onOpenSignup,
   isTransparent = true,
 }) => {
-  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -24,22 +21,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleSignInClick = () => {
-    if (onOpenLogin) {
-      onOpenLogin();
-    } else {
-      navigate('/login');
-    }
-  };
-
-  const handleJoinUsClick = () => {
-    if (onOpenSignup) {
-      onOpenSignup();
-    } else {
-      navigate('/signup');
-    }
-  };
 
   // Exactly 3 center links as specified in Figma: Home, Courses, Creators
   const navLinks = [
@@ -79,18 +60,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right: Sign In, Join Us, and Shopping Bag Icon */}
         <div className="hidden sm:flex items-center gap-7">
-          <button
-            onClick={handleSignInClick}
+          <Link
+            to="/login"
             className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors cursor-pointer"
           >
             Sign In
-          </button>
-          <button
-            onClick={handleJoinUsClick}
+          </Link>
+          <Link
+            to="/signup"
             className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors cursor-pointer"
           >
             Join Us
-          </button>
+          </Link>
           {/* Authentic Shopping Bag Icon from Figma */}
           <Link
             to="/search"
@@ -139,28 +120,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </nav>
           <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleSignInClick();
-              }}
-              className="text-white font-medium text-sm"
+            <Link
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white font-medium text-sm hover:text-[#CBFC01] transition-colors"
             >
               Sign In
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleJoinUsClick();
-              }}
-              className="text-white font-medium text-sm"
+            </Link>
+            <Link
+              to="/signup"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white font-medium text-sm hover:text-[#CBFC01] transition-colors"
             >
               Join Us
-            </button>
+            </Link>
             <Link
               to="/search"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-white p-1"
+              className="text-white p-1 hover:text-[#CBFC01] transition-colors"
             >
               <svg
                 className="w-5 h-5 fill-current"

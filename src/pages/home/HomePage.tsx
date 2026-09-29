@@ -71,10 +71,7 @@ export const HomePage: React.FC = () => {
       )}
 
       {/* Global Navbar */}
-      <Navbar
-        onOpenLogin={() => handleOpenAuth('login')}
-        onOpenSignup={() => handleOpenAuth('signup')}
-      />
+      <Navbar />
 
       {/* Main Page Flow */}
       <main className="flex-1">

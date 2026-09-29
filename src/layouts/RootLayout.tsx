@@ -11,10 +11,7 @@ export const RootLayout: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#242528] selection:bg-[#CBFC01] selection:text-[#172400]">
       {/* Global Navbar */}
-      <Navbar
-        onOpenLogin={() => openAuthModal('login')}
-        onOpenSignup={() => openAuthModal('signup')}
-      />
+      <Navbar />
 
       {/* Main Outlet Flow */}
       <main className="flex-1">
