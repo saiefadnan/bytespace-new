@@ -2,10 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
-import { CourseCard, CourseDetailsModal } from '../../features/courses';
+import { CourseCard } from '../../features/courses';
 import { Button } from '../../components/common/Button';
 import { mockCourses, mockCategories } from '../../data';
-import type { Course } from '../../types';
 
 export const SearchPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,8 +15,6 @@ export const SearchPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState(categoryParam);
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'popular' | 'rating' | 'price-low' | 'price-high'>('popular');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [enrollSuccessMessage, setEnrollSuccessMessage] = useState<string | null>(null);
 
   // Sync state to URL params on submit or click
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -70,26 +67,8 @@ export const SearchPage: React.FC = () => {
       });
   }, [searchQuery, selectedCategory, selectedLevel, sortBy]);
 
-  const handleEnrollCourse = (course: Course) => {
-    setSelectedCourse(null);
-    setEnrollSuccessMessage(`Successfully enrolled in "${course.title}"! Welcome aboard.`);
-    setTimeout(() => {
-      setEnrollSuccessMessage(null);
-    }, 4000);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#242528] selection:bg-[#CBFC01] selection:text-[#172400]">
-      {/* Toast Notification */}
-      {enrollSuccessMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#FDFFE4] border-2 border-[#CBFC01] text-[#243300] px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 animate-in slide-in-from-top-4 duration-300">
-          <span className="w-7 h-7 rounded-full bg-[#CBFC01] text-[#172400] flex items-center justify-center font-extrabold text-sm">
-            ✓
-          </span>
-          <span className="text-sm font-bold">{enrollSuccessMessage}</span>
-        </div>
-      )}
-
       {/* Global Navbar */}
       <Navbar isTransparent={false} />
 
@@ -251,7 +230,6 @@ export const SearchPage: React.FC = () => {
                 <CourseCard
                   key={course.id}
                   course={course}
-                  onSelect={(c) => setSelectedCourse(c)}
                 />
               ))}
             </div>
@@ -281,13 +259,6 @@ export const SearchPage: React.FC = () => {
 
       {/* Global Footer */}
       <Footer />
-
-      {/* Course Curriculum & Details Modal */}
-      <CourseDetailsModal
-        course={selectedCourse}
-        onClose={() => setSelectedCourse(null)}
-        onEnroll={handleEnrollCourse}
-      />
     </div>
   );
 };

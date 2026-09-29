@@ -9,13 +9,16 @@ import studentAvatar4 from '../../../assets/images/student-avatar-4.png';
 export interface CourseCardProps {
   course: Course;
   onSelect?: (course: Course) => void;
+  onClick?: (course: Course) => void;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (onSelect) {
+    if (onClick) {
+      onClick(course);
+    } else if (onSelect) {
       onSelect(course);
     } else {
       navigate(`/course/${course.id}`);
