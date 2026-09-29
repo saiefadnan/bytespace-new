@@ -81,8 +81,8 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
           })}
         </div>
 
-        {/* Courses Grid: 3 columns x 2 rows (6 cards spanning 4 columns each with 40px gutter) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px] mb-12">
+        {/* Courses Grid: 3 columns x 2 rows (372px cards with 40px gutter) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px] justify-items-center mb-12">
           {displayedCourses.map((course) => (
             <CourseCard
               key={course.id}

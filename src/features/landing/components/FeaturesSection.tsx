@@ -5,9 +5,13 @@ import courseThumb from '../../../assets/images/course-wireframing.jpg';
 import avatar3 from '../../../assets/images/avatar-3.png';
 import avatar4 from '../../../assets/images/avatar-4.png';
 import avatar5 from '../../../assets/images/avatar-5.png';
+import avatar6 from '../../../assets/images/avatar-6.png';
+import avatar7 from '../../../assets/images/avatar-7.png';
+import avatar8 from '../../../assets/images/avatar-8.png';
+import avatar9 from '../../../assets/images/avatar-9.png';
 import doodleSpiral from '../../../assets/images/hero-doodle-lime-spiral.png';
 
-// CSS filter to convert gray 3D doodle → lemon yellow (#CBFC01)
+// CSS filter to convert gray 3D doodle to vibrant lemon yellow (#CBFC01 / #D4FB20)
 const LEMON_FILTER =
   'brightness(0) saturate(100%) invert(92%) sepia(90%) saturate(600%) hue-rotate(28deg) brightness(108%)';
 
@@ -26,10 +30,9 @@ export const FeaturesSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
 
             {/* ---- Left: Text + Stats ---- */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-5 space-y-6">
               <h2 className="font-display font-extrabold text-4xl sm:text-5xl text-[#1A1C20] tracking-tight leading-[1.1]">
-                Your Path to Professional{' '}
-                <span className="text-[#003BE2]">Growth Starts Here!</span>
+                Your Path to Professional Growth Starts Here!
               </h2>
 
               <p className="text-[#4A4D57] text-sm sm:text-[15px] leading-relaxed max-w-sm">
@@ -39,71 +42,103 @@ export const FeaturesSection: React.FC = () => {
                 resources you need.
               </p>
 
-              {/* Stats row */}
-              <div className="flex items-center gap-8 pt-2">
+              {/* Stats row with blue numbers matching Figma */}
+              <div className="flex items-center gap-8 pt-4">
                 <div>
-                  <div className="text-4xl font-black text-[#1A1C20] font-display">12K</div>
+                  <div className="text-4xl sm:text-5xl font-black text-[#003BE2] font-display">12K</div>
                   <div className="text-xs text-[#82868E] mt-1 font-medium">Students</div>
                 </div>
-                <div className="w-px h-12 bg-[#C5C7CD]" />
+                <div className="w-px h-12 bg-[#CED0D3]" />
                 <div>
-                  <div className="text-4xl font-black text-[#1A1C20] font-display">70+</div>
+                  <div className="text-4xl sm:text-5xl font-black text-[#003BE2] font-display">70+</div>
                   <div className="text-xs text-[#82868E] mt-1 font-medium">Courses</div>
                 </div>
-                <div className="w-px h-12 bg-[#C5C7CD]" />
+                <div className="w-px h-12 bg-[#CED0D3]" />
                 <div>
-                  <div className="text-4xl font-black text-[#1A1C20] font-display">16</div>
+                  <div className="text-4xl sm:text-5xl font-black text-[#003BE2] font-display">16</div>
                   <div className="text-xs text-[#82868E] mt-1 font-medium">Creators</div>
                 </div>
               </div>
             </div>
 
-            {/* ---- Right: Floating Visual ---- */}
-            <div className="lg:col-span-6 relative" style={{ minHeight: '500px' }}>
+            {/* ---- Right: Floating Visual (Exact Figma Dimensions: 577x540 visual box) ---- */}
+            <div className="lg:col-span-7 relative flex items-center justify-center min-h-[540px]">
 
-              {/* Course card — sits at top-left behind student */}
-              <div className="absolute top-0 left-0 z-10 bg-white rounded-2xl shadow-xl border border-[#E5E6E8] overflow-hidden w-56">
-                <img
-                  src={courseThumb}
-                  alt="Figma course"
-                  className="w-full h-28 object-cover"
-                />
-                <div className="p-3">
-                  <div className="text-[10px] text-[#82868E]">by puropport studio</div>
-                  <div className="text-xs font-bold text-[#1A1C20] leading-snug mt-0.5 mb-2">Learn Figma from scratch</div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-semibold bg-[#E7F6FF] text-[#003BE2] rounded-full px-2 py-0.5">Beginner</span>
-                    <span className="text-xs font-black text-[#003BE2]">$25<span className="font-normal text-[#82868E] text-[10px]">/lifetime</span></span>
+              {/* Course Card: w=372px, h=383px, rx=24px */}
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[24px] shadow-2xl border border-[#CED0D3] p-4 w-[372px] h-[383px] flex flex-col justify-between hidden sm:flex">
+                <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#F5F5F6]">
+                  <img
+                    src={courseThumb}
+                    alt="Course Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#E7F6FF] text-[#003BE2] text-[11px] font-bold px-3 py-1 rounded-full">
+                    17 Lessons
                   </div>
-                  <div className="mt-2 text-[10px] text-[#82868E]">17 Lessons · 2 hrs 15 min</div>
+                  <div className="absolute top-3 right-3 bg-black/40 text-white text-[11px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    2 hours 16 mins
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <div className="text-xs text-[#82868E]">by puropport studio</div>
+                  <div className="text-base font-bold text-[#1A1C20] leading-snug mt-0.5 mb-2">
+                    Learn Figma from scratch
+                  </div>
+
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[11px] font-semibold bg-[#F6F6F6] text-[#4B4C53] rounded-full px-2.5 py-0.5">
+                      Beginner
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-[#F5F5F6]">
+                    <div className="flex items-center -space-x-1.5">
+                      <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar3} alt="" />
+                      <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar4} alt="" />
+                      <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar5} alt="" />
+                      <div className="w-7 h-7 rounded-full ring-2 ring-white bg-[#003BE2] text-white text-[9px] font-black flex items-center justify-center">
+                        +12K
+                      </div>
+                    </div>
+                    <span className="text-sm font-black text-[#003BE2]">
+                      $25<span className="font-normal text-[#82868E] text-[11px]">/lifetime</span>
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Lemon spiral doodle — right of student, between student and progress card */}
+              {/* Lemon Spiral Doodle: w=216px, h=216px, behind top-right of student */}
               <img
                 src={doodleSpiral}
                 alt=""
                 aria-hidden="true"
-                className="absolute top-12 right-12 w-28 sm:w-36 object-contain select-none pointer-events-none z-40"
-                style={{ filter: LEMON_FILTER, transform: 'rotate(-10deg)' }}
+                className="absolute top-4 right-16 w-[216px] h-[216px] object-contain select-none pointer-events-none z-10"
+                style={{ filter: LEMON_FILTER, transform: 'rotate(-8deg)' }}
               />
 
-              {/* Learning Progress card — top-right */}
-              <div className="absolute top-0 right-0 z-30 bg-white rounded-2xl shadow-xl border border-[#E5E6E8] px-4 py-3 w-44">
-                <div className="text-[10px] text-[#82868E] font-medium mb-1">Learning Progress</div>
-                <div className="text-3xl font-black text-[#1A1C20] leading-none">55%</div>
-                <div className="w-full h-2 rounded-full bg-[#F0F0F0] mt-2.5 overflow-hidden">
-                  <div className="h-full rounded-full bg-[#CBFC01] w-[55%]" />
+              {/* Authentic Student Cutout: w=577px, h=540px */}
+              <img
+                src={heroStudent}
+                alt="Student learning"
+                className="relative z-20 w-[480px] sm:w-[577px] h-auto max-h-[540px] object-contain drop-shadow-2xl select-none translate-x-4 sm:translate-x-12"
+              />
+
+              {/* Learning Progress Card: w=232px, h=138px, rx=16px */}
+              <div className="absolute top-16 right-0 z-30 bg-white/95 backdrop-blur-md rounded-[16px] shadow-2xl border border-[#E5E6E8] p-4 w-[232px] h-[138px] flex flex-col justify-between">
+                <div>
+                  <div className="text-[11px] text-[#82868E] font-semibold">Learning Progress</div>
+                  <div className="text-4xl font-extrabold text-[#1A1C20] tracking-tight mt-1">55%</div>
+                </div>
+                <div>
+                  <div className="w-[200px] h-[8px] rounded-full bg-[#F6F6F6] overflow-hidden">
+                    <div className="h-full rounded-full bg-[#D4FB20] w-[56%]" />
+                  </div>
                 </div>
               </div>
 
-              {/* Male student cutout — overlapping the course card */}
-              <img
-                src={heroStudent}
-                alt="Student learning with laptop"
-                className="absolute bottom-0 left-20 z-20 w-72 sm:w-80 object-contain drop-shadow-2xl select-none"
-              />
             </div>
+
           </div>
         </div>
       </div>
@@ -118,63 +153,78 @@ export const FeaturesSection: React.FC = () => {
         <div className="bytespace-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
 
-            {/* ---- Left: Floating Visual ---- */}
-            <div className="lg:col-span-6 relative order-2 lg:order-1" style={{ minHeight: '520px' }}>
+            {/* ---- Left: Floating Visual (Creator student + 3 cards) ---- */}
+            <div className="lg:col-span-7 relative flex items-center justify-center min-h-[580px] order-2 lg:order-1">
 
-              {/* Total Revenue card */}
-              <div className="absolute top-8 left-0 z-20 bg-[#003BE2] text-white rounded-2xl px-4 py-3 shadow-2xl min-w-[145px]">
-                <div className="text-[10px] text-white/60 font-medium">Total Revenue</div>
-                <div className="text-[10px] text-white/50 mb-1">July 1-28</div>
-                <div className="text-xl font-black text-[#CBFC01]">$120.29</div>
-              </div>
-
-              {/* Year to Date card */}
-              <div className="absolute top-36 left-0 z-20 bg-[#003BE2] text-white rounded-2xl px-4 py-3 shadow-2xl min-w-[155px]">
-                <div className="text-[10px] text-white/60 font-medium">Year to Date</div>
-                <div className="text-[10px] text-white/50 mb-1">2026</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-extrabold">$1,200.38</span>
-                  <span className="bg-[#CBFC01] text-[#172400] text-[9px] font-black px-1.5 py-0.5 rounded-full">+12%</span>
+              {/* Total Revenue Card: w=232px, h=119px, rx=16px, bg=#003BE2 */}
+              <div className="absolute top-8 left-0 sm:left-4 z-20 bg-[#003BE2] text-white rounded-[16px] p-4 shadow-2xl w-[232px] h-[119px] flex flex-col justify-between">
+                <div>
+                  <div className="text-xs text-white/70 font-medium">Total Revenue</div>
+                  <div className="text-[10px] text-white/50">July 1-28</div>
+                </div>
+                <div className="text-2xl font-black text-[#CBFC01]">$120.29</div>
+                <div className="w-full h-2 rounded-full bg-white/20 overflow-hidden">
+                  <div className="h-full rounded-full bg-[#CBFC01] w-[56%]" />
                 </div>
               </div>
 
-              {/* Lemon spiral doodle — overlapping student to the right */}
+              {/* Year to Date Card: w=134px, h=135px, rx=16px, bg=#003BE2 */}
+              <div className="absolute top-44 left-0 sm:left-4 z-20 bg-[#003BE2] text-white rounded-[16px] p-4 shadow-2xl w-[134px] h-[135px] flex flex-col justify-between">
+                <div>
+                  <div className="text-xs text-white/70 font-medium">Year to Date</div>
+                  <div className="text-[10px] text-white/50">2026</div>
+                </div>
+                <div className="text-base font-extrabold text-white leading-tight">$1,200.38</div>
+                <div>
+                  <span className="inline-block bg-[#CBFC01] text-[#172400] text-[11px] font-black px-2 py-0.5 rounded-full">
+                    +12%
+                  </span>
+                </div>
+              </div>
+
+              {/* Lemon Spiral Doodle: w=216px, h=216px, to right of creator student */}
               <img
                 src={doodleSpiral}
                 alt=""
                 aria-hidden="true"
-                className="absolute top-16 right-8 w-32 sm:w-40 object-contain select-none pointer-events-none z-30"
-                style={{ filter: LEMON_FILTER, transform: 'rotate(15deg)' }}
+                className="absolute top-12 right-12 sm:right-24 w-[216px] h-[216px] object-contain select-none pointer-events-none z-10"
+                style={{ filter: LEMON_FILTER, transform: 'rotate(12deg)' }}
               />
 
-              {/* Creator student — centered */}
+              {/* Creator Student Cutout: w=435px, h=596px */}
               <img
                 src={creatorStudent}
                 alt="ByteSpace Creator"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-64 sm:w-72 object-contain drop-shadow-2xl select-none"
+                className="relative z-20 w-[340px] sm:w-[435px] h-auto max-h-[596px] object-contain drop-shadow-2xl select-none"
               />
 
-              {/* Happy Students card — bottom right */}
-              <div className="absolute bottom-4 right-0 z-20 bg-white rounded-2xl shadow-xl border border-[#E5E6E8] px-4 py-3">
-                <div className="text-[11px] font-bold text-[#242528] mb-2">Happy Students</div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="flex -space-x-1.5">
-                    <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar3} alt="" />
-                    <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar4} alt="" />
-                    <img className="w-7 h-7 rounded-full ring-2 ring-white object-cover" src={avatar5} alt="" />
-                  </div>
-                  <span className="text-[11px] font-bold text-[#82868E]">2K+</span>
+              {/* Happy Students Card: w=258px, h=123px, rx=16px, bg=white */}
+              <div className="absolute bottom-2 right-4 sm:right-16 z-30 bg-white/95 backdrop-blur-md rounded-[16px] shadow-2xl border border-[#E5E6E8] p-4 w-[258px] h-[123px] flex flex-col justify-between">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#242528]">Happy Students</span>
+                  <span className="text-xs text-amber-500 font-extrabold flex items-center gap-0.5">
+                    4.5 <span className="text-[#82868E] font-normal">(240)</span> ★
+                  </span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[#F5A623] text-xs tracking-tight">★★★★★</span>
-                  <span className="text-[11px] font-bold text-[#242528]">4.5</span>
-                  <span className="text-[10px] text-[#82868E]">(440)</span>
+
+                <div className="flex items-center -space-x-2">
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar3} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar4} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar5} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar6} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar7} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar8} alt="" />
+                  <img className="w-8 h-8 rounded-full ring-2 ring-white object-cover" src={avatar9} alt="" />
+                  <div className="w-8 h-8 rounded-full ring-2 ring-white bg-[#D4FB20] text-[#172400] text-[9px] font-black flex items-center justify-center">
+                    2K+
+                  </div>
                 </div>
               </div>
+
             </div>
 
             {/* ---- Right: Text + Checklist ---- */}
-            <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
+            <div className="lg:col-span-5 space-y-6 order-1 lg:order-2">
               <h2 className="font-display font-extrabold text-4xl sm:text-5xl text-[#1A1C20] tracking-tight leading-[1.1]">
                 Create &amp; Manage Courses Easily.
               </h2>
@@ -184,7 +234,7 @@ export const FeaturesSection: React.FC = () => {
                 administration of educational courses.
               </p>
 
-              <div className="space-y-4 pt-1">
+              <div className="space-y-4 pt-2">
                 {[
                   'Share Your Expertise',
                   'Monetize Your Passion',

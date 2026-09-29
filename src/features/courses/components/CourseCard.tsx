@@ -23,10 +23,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
   return (
     <article
       onClick={handleClick}
-      className="course-card-hover group bg-white border border-[#E5E6E8] rounded-2xl overflow-hidden flex flex-col cursor-pointer"
+      className="course-card-hover group bg-white border border-[#CED0D3] rounded-[24px] p-4 flex flex-col justify-between cursor-pointer w-full max-w-[372px] min-h-[383px] shadow-sm hover:shadow-md transition-all duration-200"
     >
-      {/* Thumbnail with Badge & Bookmark */}
-      <div className="relative aspect-video w-full overflow-hidden bg-[#F5F5F6]">
+      {/* Thumbnail: exact w=341px, h=195px, rx=12px from Figma */}
+      <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#F5F5F6] flex-shrink-0">
         <img
           src={course.thumbnail}
           alt={course.title}
@@ -35,9 +35,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
         />
         {course.isPopular && (
           <div className="absolute top-3 left-3">
-            <Badge variant="lime" size="sm" pill>
+            <span className="text-[11px] font-bold bg-[#E7F6FF] text-[#003BE2] rounded-full px-3 py-1">
               Popular
-            </Badge>
+            </span>
           </div>
         )}
         <button
@@ -63,7 +63,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
       </div>
 
       {/* Card Content */}
-      <div className="p-5 flex-1 flex flex-col justify-between">
+      <div className="pt-3 flex-1 flex flex-col justify-between">
         <div>
           {/* Rating, Reviews, Level */}
           <div className="flex items-center justify-between text-xs text-[#82868E] mb-2">

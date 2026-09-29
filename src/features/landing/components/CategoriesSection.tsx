@@ -80,22 +80,22 @@ export const CategoriesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Category Cards — 6-column grid matching Figma */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-[40px]">
+        {/* Category Cards — 6-column grid matching Figma exact 166x166px, rounded-[24px], border #CED0D3 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-[40px] justify-items-center">
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
               <button
                 key={cat.id}
                 id={`category-${cat.id}`}
-                className="group flex flex-col items-center gap-4 p-6 bg-white border border-[#E5E6E8] rounded-2xl shadow-sm hover:border-[#CBFC01] hover:shadow-md transition-all duration-200 cursor-pointer"
+                className="group flex flex-col items-center justify-center gap-3 w-[166px] h-[166px] bg-white border border-[#CED0D3] rounded-[24px] shadow-sm hover:border-[#CBFC01] hover:shadow-md transition-all duration-200 cursor-pointer"
               >
-                {/* Icon Circle */}
-                <div className="w-14 h-14 rounded-full bg-[#CBFC01] flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-sm flex-shrink-0">
+                {/* Icon Circle: exact 60x60px, rounded-full, fill #D4FB20 */}
+                <div className="w-[60px] h-[60px] rounded-full bg-[#D4FB20] flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-sm flex-shrink-0">
                   <Icon />
                 </div>
-                {/* Label */}
-                <span className="text-sm font-semibold text-[#242528] text-center leading-tight">
+                {/* Label: exact font size & styling */}
+                <span className="text-[15px] font-bold text-[#1A1C20] text-center leading-tight">
                   {cat.name}
                 </span>
               </button>

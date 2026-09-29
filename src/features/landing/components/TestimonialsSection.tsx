@@ -54,7 +54,7 @@ export const TestimonialsSection: React.FC = () => {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="bg-white border border-[#E5E6E8] rounded-3xl p-8 sm:p-9 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-300"
+              className="bg-white border border-[#CED0D3] rounded-[24px] p-8 flex flex-col justify-between min-h-[420px] shadow-sm hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300"
             >
               <div className="space-y-4">
                 {/* 5-Star Rating */}
@@ -66,23 +66,23 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
 
                 {/* Quote */}
-                <p className="text-[#242528] text-sm sm:text-base leading-relaxed">
+                <p className="text-[#242528] text-sm sm:text-[15px] leading-relaxed">
                   "{t.quote}"
                 </p>
               </div>
 
-              {/* Author Info */}
-              <div className="flex items-center gap-3.5 pt-6 border-t border-[#F5F5F6] mt-6">
+              {/* Author Info — Exact 80px Avatar from Figma */}
+              <div className="flex items-center gap-4 pt-6 border-t border-[#F5F5F6] mt-6">
                 <img
                   src={t.avatar}
                   alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#D4FB20]"
+                  className="w-20 h-20 rounded-full object-cover ring-2 ring-[#D4FB20] flex-shrink-0"
                 />
                 <div>
-                  <h4 className="font-display font-bold text-sm text-[#242528]">
+                  <h4 className="font-display font-bold text-base text-[#242528]">
                     {t.name}
                   </h4>
-                  <p className="text-xs text-[#82868E]">{t.role}</p>
+                  <p className="text-xs text-[#82868E] mt-0.5">{t.role}</p>
                 </div>
               </div>
             </div>
