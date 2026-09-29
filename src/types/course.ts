@@ -32,6 +32,8 @@ export interface Course {
   reviewCount: number;
   duration: string;
   lessonsCount: number;
+  commentsCount?: number;
+  enrolledStudentsCount?: number;
   instructor: Instructor;
   price: number;
   originalPrice?: number;
