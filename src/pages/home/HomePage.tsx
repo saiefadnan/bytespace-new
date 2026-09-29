@@ -11,7 +11,6 @@ import {
   TestimonialsSection,
 } from '../../features/landing';
 import { PopularCoursesSection, CourseDetailsModal } from '../../features/courses';
-import { AuthModal } from '../../features/auth';
 import { mockCourses, mockCategories } from '../../data';
 
 import type { Course } from '../../types';
@@ -21,8 +20,6 @@ export const HomePage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [authModalOpen, setAuthModalOpen] = useState<boolean>(false);
-  const [authInitialMode, setAuthInitialMode] = useState<'login' | 'signup'>('login');
   const [enrollSuccessMessage, setEnrollSuccessMessage] = useState<string | null>(null);
 
   // Filter courses by category and optional search query
@@ -36,11 +33,6 @@ export const HomePage: React.FC = () => {
       course.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-
-  const handleOpenAuth = (mode: 'login' | 'signup') => {
-    setAuthInitialMode(mode);
-    setAuthModalOpen(true);
-  };
 
   const handleHeroSearch = (query: string) => {
     setSearchQuery(query);
@@ -120,13 +112,6 @@ export const HomePage: React.FC = () => {
         course={selectedCourse}
         onClose={() => setSelectedCourse(null)}
         onEnroll={handleEnrollCourse}
-      />
-
-      {/* Login & Register Auth Modal */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authInitialMode}
-        onClose={() => setAuthModalOpen(false)}
       />
     </div>
   );

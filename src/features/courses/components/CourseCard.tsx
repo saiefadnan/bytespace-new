@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Course } from '../types';
-import { Badge } from '../../../components/common/Badge';
 
 export interface CourseCardProps {
   course: Course;

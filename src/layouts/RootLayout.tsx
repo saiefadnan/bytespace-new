@@ -6,7 +6,7 @@ import { AuthModal } from '../features/auth';
 import { useAuthContext } from '../context';
 
 export const RootLayout: React.FC = () => {
-  const { authModalOpen, authModalMode, closeAuthModal, openAuthModal } = useAuthContext();
+  const { authModalOpen, authModalMode, closeAuthModal } = useAuthContext();
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#242528] selection:bg-[#CBFC01] selection:text-[#172400]">
