@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const fileContent = `import React from 'react';
 import heroStudent from '../../../assets/images/figma-hero-student.png';
 import creatorStudent from '../../../assets/images/figma-creator-pattern58_1_1067.png';
 import figmaCreatorDoodle from '../../../assets/images/figma-creator-pattern66_1_1067.png';
@@ -297,3 +299,7 @@ export const FeaturesSection: React.FC = () => {
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/landing/components/FeaturesSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated FeaturesSection.tsx with 683px girl and correct z-index layering');

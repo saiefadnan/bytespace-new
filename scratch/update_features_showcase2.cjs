@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const fileContent = `import React from 'react';
 import heroStudent from '../../../assets/images/figma-hero-student.png';
 import creatorStudent from '../../../assets/images/figma-creator-pattern58_1_1067.png';
 import figmaCreatorDoodle from '../../../assets/images/figma-creator-pattern66_1_1067.png';
@@ -181,9 +183,9 @@ export const FeaturesSection: React.FC = () => {
 
             {/* ---- Left: Floating Visual Cluster (Exact Figma 541x596 Box) ---- */}
             <div className="lg:col-span-7 relative flex items-center justify-center min-h-[520px] sm:min-h-[596px] order-2 lg:order-1 py-4">
-              <div className="relative w-[541px] h-[596px] scale-[0.68] xs:scale-[0.8] sm:scale-[0.9] md:scale-95 lg:scale-100 origin-center select-none flex-shrink-0">
+              <div className="relative w-[541px] h-[596px] scale-[0.62] xs:scale-[0.75] sm:scale-[0.88] md:scale-95 lg:scale-100 origin-center select-none flex-shrink-0">
 
-                {/* Lime Zigzag Scribble Doodle: behind girl shoulder at z-10 */}
+                {/* Lime Zigzag Scribble Doodle: x=303, y=114, w=216, h=216 */}
                 <img
                   src={figmaCreatorDoodle}
                   alt=""
@@ -192,8 +194,15 @@ export const FeaturesSection: React.FC = () => {
                   style={{ filter: LEMON_FILTER }}
                 />
 
-                {/* Total Revenue Card: behind girl face & headset at z-10 */}
-                <div className="absolute left-0 top-[44px] z-10 bg-[#003BE2] text-white rounded-[16px] p-4 shadow-xl w-[232px] h-[119px] flex flex-col justify-between">
+                {/* Creator Student Cutout: x=28, y=0, w=435, h=596 */}
+                <img
+                  src={creatorStudent}
+                  alt="ByteSpace Creator"
+                  className="absolute left-[28px] top-0 w-[435px] h-[596px] object-contain z-20 pointer-events-none drop-shadow-[15px_25px_35px_rgba(0,0,0,0.12)]"
+                />
+
+                {/* Total Revenue Card: x=0, y=44, w=232, h=119, rx=16 */}
+                <div className="absolute left-0 top-[44px] z-30 bg-[#003BE2] text-white rounded-[16px] p-4 shadow-xl w-[232px] h-[119px] flex flex-col justify-between">
                   <div>
                     <div className="text-xs text-white/80 font-medium">Total Revenue</div>
                     <div className="text-[10px] text-white/60">July 1-28</div>
@@ -204,8 +213,8 @@ export const FeaturesSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Year to Date Card: behind girl vest & sleeve at z-10 */}
-                <div className="absolute left-0 top-[194px] z-10 bg-[#003BE2] text-white rounded-[16px] p-3.5 shadow-xl w-[134px] h-[135px] flex flex-col justify-between">
+                {/* Year to Date Card: x=0, y=194, w=134, h=135, rx=16 */}
+                <div className="absolute left-0 top-[194px] z-30 bg-[#003BE2] text-white rounded-[16px] p-3.5 shadow-xl w-[134px] h-[135px] flex flex-col justify-between">
                   <div>
                     <div className="text-xs text-white/80 font-medium">Year to Date</div>
                     <div className="text-[10px] text-white/60">2023</div>
@@ -218,22 +227,7 @@ export const FeaturesSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Creator Student Cutout: z-20 (IN FRONT OF blue cards and doodle, behind Happy Students) */}
-                {/* Exact Figma matrix scale: 683px x 683px clipped inside 435px x 596px frame */}
-                <div
-                  className="absolute left-[28px] top-0 w-[435px] h-[596px] overflow-hidden z-20 pointer-events-none"
-                  style={{
-                    filter: 'drop-shadow(15px 25px 35px rgba(0, 0, 0, 0.12))',
-                  }}
-                >
-                  <img
-                    src={creatorStudent}
-                    alt="ByteSpace Creator"
-                    className="absolute left-[-124px] top-0 w-[683px] h-[683px] max-w-none select-none pointer-events-none object-cover"
-                  />
-                </div>
-
-                {/* Happy Students Card: z-30 (IN FRONT OF girl tablet & hand) */}
+                {/* Happy Students Card: x=283, y=413, w=258, h=123, rx=16 */}
                 <div className="absolute left-[283px] top-[413px] z-30 bg-white/95 backdrop-blur-md rounded-[16px] shadow-2xl border border-[#E5E6E8] p-3.5 w-[258px] h-[123px] flex flex-col justify-between">
                   <div>
                     <div className="text-xs font-bold text-[#242528]">Happy Students</div>
@@ -297,3 +291,7 @@ export const FeaturesSection: React.FC = () => {
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/landing/components/FeaturesSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated FeaturesSection.tsx');

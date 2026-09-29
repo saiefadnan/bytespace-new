@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const fileContent = `import React from 'react';
 import type { Course, Category } from '../types';
 import { CourseCard } from './CourseCard';
 
@@ -49,11 +51,11 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
               <button
                 key={category.id}
                 onClick={() => onSelectCategory(category.slug)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                className={\`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer \${
                   isActive
                     ? 'bg-[#D4FB20] text-[#172400] shadow-md shadow-[#D4FB20]/30 scale-105'
                     : 'bg-[#F5F5F6] text-[#585A62] hover:bg-[#E5E6E8] hover:text-[#242528]'
-                }`}
+                }\`}
               >
                 {category.name}
               </button>
@@ -75,3 +77,7 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/courses/components/PopularCoursesSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated PopularCoursesSection.tsx');
