@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { ByteSpaceLogo } from './ByteSpaceLogo';
 
 export interface NavbarProps {
-  onOpenLogin?: () => void;
-  onOpenSignup?: () => void;
   isTransparent?: boolean;
 }
 
