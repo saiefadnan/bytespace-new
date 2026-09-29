@@ -10,17 +10,13 @@ import {
   PromoCtaSection,
   TestimonialsSection,
 } from '../../features/landing';
-import { PopularCoursesSection, CourseDetailsModal } from '../../features/courses';
+import { PopularCoursesSection } from '../../features/courses';
 import { mockCourses, mockCategories } from '../../data';
-
-import type { Course } from '../../types';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>('featured');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [enrollSuccessMessage, setEnrollSuccessMessage] = useState<string | null>(null);
 
   // Filter courses by category and optional search query
   const displayedCourses = mockCourses.filter((course) => {
@@ -44,26 +40,8 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  const handleEnrollCourse = (course: Course) => {
-    setSelectedCourse(null);
-    setEnrollSuccessMessage(`Successfully enrolled in "${course.title}"! Welcome aboard.`);
-    setTimeout(() => {
-      setEnrollSuccessMessage(null);
-    }, 4000);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#242528] selection:bg-[#CBFC01] selection:text-[#172400]">
-      {/* Toast Notification */}
-      {enrollSuccessMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#FDFFE4] border-2 border-[#CBFC01] text-[#243300] px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 animate-in slide-in-from-top-4 duration-300">
-          <span className="w-7 h-7 rounded-full bg-[#CBFC01] text-[#172400] flex items-center justify-center font-extrabold text-sm">
-            ✓
-          </span>
-          <span className="text-sm font-bold">{enrollSuccessMessage}</span>
-        </div>
-      )}
-
       {/* Global Navbar */}
       <Navbar />
 
@@ -90,7 +68,7 @@ export const HomePage: React.FC = () => {
             setActiveCategory(catSlug);
             setSearchQuery('');
           }}
-          onSelectCourse={(course) => setSelectedCourse(course)}
+          onSelectCourse={(course) => navigate(`/course/${course.id}`)}
         />
 
         {/* 4. Course Categories */}
@@ -108,13 +86,6 @@ export const HomePage: React.FC = () => {
 
       {/* Global Footer */}
       <Footer />
-
-      {/* Course Curriculum & Details Modal */}
-      <CourseDetailsModal
-        course={selectedCourse}
-        onClose={() => setSelectedCourse(null)}
-        onEnroll={handleEnrollCourse}
-      />
     </div>
   );
 };
