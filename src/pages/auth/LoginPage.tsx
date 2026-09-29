@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ByteSpaceLogo } from '../../components/common/ByteSpaceLogo';
-import { Button } from '../../components/common/Button';
-import avatarImg from '../../assets/images/avatar-3.png';
-import doodleSpring from '../../assets/images/doodle-spring-1.png';
+
+// Authentic Assets
+import courseBigData from '../../assets/images/auth/course-big-data.jpg';
+import courseBuildDigital from '../../assets/images/auth/course-build-digital.jpg';
+import doodleTorus from '../../assets/images/auth/doodle-torus.png';
+import doodleCone from '../../assets/images/auth/doodle-cone.png';
+import doodleSpring from '../../assets/images/auth/doodle-spring.png';
+
+// Avatars
+import avatar1 from '../../assets/images/auth/avatar-1.png';
+import avatar2 from '../../assets/images/auth/avatar-2.png';
+import avatar3 from '../../assets/images/auth/avatar-3.png';
+import avatar6 from '../../assets/images/auth/avatar-6.png';
+import avatar7 from '../../assets/images/auth/avatar-7.png';
+import avatar8 from '../../assets/images/auth/avatar-8.png';
+import avatar9 from '../../assets/images/auth/avatar-9.png';
+import avatar10 from '../../assets/images/auth/avatar-10.png';
+import avatar11 from '../../assets/images/auth/avatar-11.png';
+
+// Authentic Figma Doodle Filters
+const LEMON_FILTER =
+  'brightness(0) saturate(100%) invert(92%) sepia(90%) saturate(600%) hue-rotate(28deg) brightness(108%)';
+const LEMON_DOODLE_FILTER = `${LEMON_FILTER} drop-shadow(0 20px 30px rgba(0,0,0,0.18))`;
+const WHITE_DOODLE_FILTER = 'brightness(1.5) contrast(1.1) drop-shadow(0 15px 25px rgba(0,0,0,0.18))';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -31,264 +49,449 @@ export const LoginPage: React.FC = () => {
       setSuccess(true);
       setTimeout(() => {
         navigate('/');
-      }, 1200);
-    }, 800);
+      }, 1000);
+    }, 600);
   };
 
   return (
-    <div className="min-h-screen bg-[#003BE2] relative flex flex-col justify-between overflow-x-hidden selection:bg-[#CBFC01] selection:text-[#172400]">
-      {/* Background Decorative Ambience */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-b from-[#2872FF]/30 to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#CBFC01]/10 rounded-full blur-3xl pointer-events-none" />
-      
-      {/* 3D Floating Element */}
-      <img
-        src={doodleSpring}
-        alt=""
-        aria-hidden="true"
-        className="hidden xl:block absolute top-12 left-10 w-28 opacity-40 animate-pulse pointer-events-none select-none"
+    <div className="min-h-screen bg-[#003BE2] relative flex flex-col justify-center overflow-x-hidden selection:bg-[#D4FB20] selection:text-[#172400]">
+      {/* 1. Authentic 120px Background Grid Overlay from Figma */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.12] z-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #FFFFFF 1.5px, transparent 1.5px), linear-gradient(to bottom, #FFFFFF 1.5px, transparent 1.5px)',
+          backgroundSize: '120px 120px',
+        }}
       />
 
-      {/* Top Header / Logo Bar */}
-      <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
-        <Link to="/" className="group flex items-center gap-3">
-          <ByteSpaceLogo theme="light" size="md" />
+      {/* 2. Top-bar Navigation (Logo & Back to Home) */}
+      <header className="absolute top-0 left-0 right-0 z-40 w-full max-w-[1440px] mx-auto px-6 xl:px-[122px] pt-9 flex items-center justify-between pointer-events-auto">
+        <Link to="/" className="group flex items-center" aria-label="ByteSpace Home">
+          {/* Authentic ByteSpace Logo Mark from Figma */}
+          <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 10.5C10.5 4.701 5.799 0 0 0V21C0 26.799 4.701 31.5 10.5 31.5V10.5Z" fill="#D4FB20" />
+            <path d="M18.375 10.5C24.174 10.5 28.875 15.201 28.875 21H21C15.201 21 10.5 16.299 10.5 10.5L18.375 10.5Z" fill="#D4FB20" />
+            <path d="M18.375 31.5C24.174 31.5 28.875 26.799 28.875 21H21C15.201 21 10.5 25.701 10.5 31.5L18.375 31.5Z" fill="#D4FB20" />
+          </svg>
         </Link>
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-white/90 hover:text-[#CBFC01] text-sm font-semibold transition-colors bg-white/10 hover:bg-white/15 px-4 py-2 rounded-full backdrop-blur-sm"
+          className="inline-flex items-center gap-2 text-white/90 hover:text-[#D4FB20] text-sm font-semibold transition-colors bg-white/10 hover:bg-white/15 px-4 py-2 rounded-full backdrop-blur-sm shadow-sm"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Home
+          <span aria-hidden="true">&larr;</span> Back to Home
         </Link>
       </header>
 
-      {/* Main Content Area: Split 2-Column Desktop Grid */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 md:py-12 flex-1 flex items-center justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full max-w-5xl">
-          {/* Left Column: Branding / Value Proposition Card (Figma style) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-center space-y-8 text-white">
-            <div className="space-y-4">
-              <span className="inline-block bg-[#CBFC01] text-[#172400] text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
-                Welcome Back
-              </span>
-              <h1 className="text-4xl xl:text-5xl font-extrabold leading-tight">
-                Unlock your creative potential with <span className="text-[#CBFC01]">ByteSpace</span>.
-              </h1>
-              <p className="text-white/80 text-base leading-relaxed">
-                Connect with world-class industry mentors, master high-income skills, and collaborate with thousands of passionate creators.
-              </p>
-            </div>
+      {/* 3. Main Stage: Desktop 1440px Canvas & Mobile Stack */}
+      <main className="relative z-10 w-full max-w-[1440px] mx-auto min-h-[1024px] flex items-center justify-center px-4 sm:px-6 xl:px-0 pt-24 pb-12 xl:py-0">
+        
+        {/* DESKTOP EXACT FIGMA VIEW (xl:block, min-width: 1280px) */}
+        <div className="hidden xl:block w-[1440px] h-[1024px] relative mx-auto pointer-events-auto">
+          
+          {/* Top-Left Heading */}
+          <div className="absolute top-[135px] left-[120px] max-w-[440px]">
+            <h1 className="text-white font-bold text-[28px] leading-tight tracking-tight">
+              Sign in with ease
+            </h1>
+            <p className="text-white/80 text-[14px] leading-relaxed mt-3">
+              Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.
+            </p>
+          </div>
 
-            {/* Testimonial Quote Card matching Figma layout */}
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl space-y-4 shadow-xl">
-              <div className="flex items-center gap-1 text-[#CBFC01]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+          {/* Left Visual Composition (Exact Figma Coordinates) */}
+          
+          {/* Back Card: "Build Digital..." (Figma: x=122.5, y=394.5, w=372, h=383, rx=23.5) */}
+          <div className="absolute left-[122.5px] top-[394.5px] w-[372px] h-[383px] bg-white rounded-[24px] border border-[#CED0D3] p-4 flex flex-col justify-between select-none z-10 shadow-sm">
+            <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#443131]">
+              <img src={courseBuildDigital} alt="Build Digital Course" className="w-full h-full object-cover" />
+              <div className="absolute bottom-3 left-3 px-3 py-1 bg-[#F6F6F6]/80 backdrop-blur-md rounded-full text-[11px] font-semibold text-[#4F4F4F]">
+                17 Lessons
               </div>
-              <p className="text-white/95 text-sm italic leading-relaxed">
-                "The curriculum and 1-on-1 mentorship at ByteSpace landed me my first senior product design role within 4 months."
-              </p>
-              <div className="flex items-center gap-3 pt-2 border-t border-white/10">
-                <img
-                  src={avatarImg}
-                  alt="Courtney Henry"
-                  className="w-10 h-10 rounded-full object-cover ring-2 ring-[#CBFC01]"
-                />
-                <div>
-                  <h4 className="text-sm font-bold text-white">Courtney Henry</h4>
-                  <p className="text-xs text-white/70">UI/UX Designer at Spotify</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-[#1A1A1A] text-[17px] leading-tight mt-1">Build Digit...</h3>
+              <p className="text-xs text-[#82868E] mt-0.5">by purepearl studio</p>
+            </div>
+            <div className="flex items-center justify-between pt-2 border-t border-[#F5F5F6]">
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F5F5F6] rounded-full text-xs font-medium text-[#4F4F4F]">
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
+                  <path d="M2 13h2V8H2v5zm5 0h2V5H7v8zm5 0h2V2h-2v11z" />
+                </svg>
+                Beginner
+              </div>
+              <div className="flex items-center -space-x-2">
+                <img src={avatar1} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <img src={avatar2} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <img src={avatar3} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <div className="w-6 h-6 rounded-full bg-black text-white text-[9px] font-bold flex items-center justify-center border-2 border-white">
+                  26+
                 </div>
+              </div>
+              <div className="text-right">
+                <span className="text-[17px] font-bold text-[#003BE2]">$25</span>
+                <span className="text-xs text-[#82868E]">/lifetime</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Auth Form Card */}
-          <div className="lg:col-span-7 flex justify-center">
-            <div className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 shadow-2xl shadow-black/25 border border-white/20">
-              {/* Form Header */}
-              <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#242528] tracking-tight">
-                  Sign In
-                </h2>
-                <p className="text-sm text-[#82868E] mt-2">
-                  Welcome back! Please enter your details.
-                </p>
+          {/* Bottom-Right White Spring Doodle (Figma: matrix(-1 0 0 1 646.628 626), w=175.8, h=175.8) */}
+          {/* Sits behind Happy Students card (z-15) */}
+          <img
+            src={doodleSpring}
+            alt=""
+            aria-hidden="true"
+            className="absolute left-[470.8px] top-[626px] w-[175.8px] h-[175.8px] pointer-events-none select-none z-15 scale-x-[-1]"
+            style={{ filter: WHITE_DOODLE_FILTER }}
+          />
+
+          {/* Front Card: "the Power of Big Data" (Figma: x=233.5, y=305.5, w=372, h=383, rx=23.5) */}
+          <div className="absolute left-[233.5px] top-[305.5px] w-[372px] h-[383px] bg-white rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.18)] p-4 flex flex-col justify-between select-none z-20">
+            <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#443131]">
+              <img src={courseBigData} alt="The Power of Big Data" className="w-full h-full object-cover" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5">
+                <span className="px-2.5 py-1 bg-[#F6F6F6]/90 backdrop-blur-md rounded-full text-[10px] font-semibold text-[#4F4F4F]">
+                  17 Lessons
+                </span>
+                <span className="px-2.5 py-1 bg-[#F6F6F6]/90 backdrop-blur-md rounded-full text-[10px] font-semibold text-[#4F4F4F]">
+                  2 hours 16 mins
+                </span>
+                <span className="px-2.5 py-1 bg-[#F6F6F6]/90 backdrop-blur-md rounded-full text-[10px] font-semibold text-[#4F4F4F]">
+                  59 Comments
+                </span>
               </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between mt-1">
+                <h3 className="font-bold text-[#1A1A1A] text-[17px] leading-tight">the Power of Big Data</h3>
+                <div className="flex items-center gap-1 text-[13px] font-bold text-[#1A1A1A]">
+                  <span>4.5</span>
+                  <span className="text-[#FFD000] text-sm">★</span>
+                </div>
+              </div>
+              <p className="text-xs text-[#82868E] mt-0.5">by purepearl studio</p>
+            </div>
+            <div className="flex items-center justify-between pt-2 border-t border-[#F5F5F6]">
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F5F5F6] rounded-full text-xs font-medium text-[#4F4F4F]">
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
+                  <path d="M2 13h2V8H2v5zm5 0h2V5H7v8zm5 0h2V2h-2v11z" />
+                </svg>
+                Beginner
+              </div>
+              <div className="flex items-center -space-x-2">
+                <img src={avatar6} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <img src={avatar7} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <img src={avatar8} alt="" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                <div className="w-6 h-6 rounded-full bg-black text-white text-[9px] font-bold flex items-center justify-center border-2 border-white">
+                  26+
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="text-[17px] font-bold text-[#003BE2]">$25</span>
+                <span className="text-xs text-[#82868E]">/lifetime</span>
+              </div>
+            </div>
+          </div>
 
-              {/* Status Banner */}
+          {/* Happy Students Floating Badge in #D4FB20 (Figma: x=348, y=740, w=258, h=123, rx=16) */}
+          <div className="absolute left-[348px] top-[740px] w-[258px] h-[123px] bg-[#D4FB20] rounded-[16px] p-4 shadow-xl flex flex-col justify-between z-30 select-none">
+            <div>
+              <h4 className="font-extrabold text-[#172400] text-base leading-tight">Happy Students</h4>
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#172400] mt-1">
+                <span>4.5 (240)</span>
+                <span className="text-[#003BE2] text-sm">★</span>
+              </div>
+            </div>
+            <div className="flex items-center -space-x-2 pt-1">
+              <img src={avatar9} alt="" className="w-7 h-7 rounded-full border-2 border-[#D4FB20] object-cover" />
+              <img src={avatar10} alt="" className="w-7 h-7 rounded-full border-2 border-[#D4FB20] object-cover" />
+              <img src={avatar11} alt="" className="w-7 h-7 rounded-full border-2 border-[#D4FB20] object-cover" />
+              <img src={avatar1} alt="" className="w-7 h-7 rounded-full border-2 border-[#D4FB20] object-cover" />
+              <img src={avatar2} alt="" className="w-7 h-7 rounded-full border-2 border-[#D4FB20] object-cover" />
+              <div className="w-7 h-7 rounded-full bg-black text-white text-[10px] font-bold flex items-center justify-center border-2 border-[#D4FB20]">
+                2K+
+              </div>
+            </div>
+          </div>
+
+          {/* Top-Left Lemon Donut Doodle (Figma: x=149.5, y=319.7, w=146.7, h=146.7) */}
+          <img
+            src={doodleTorus}
+            alt=""
+            aria-hidden="true"
+            className="absolute left-[149.5px] top-[319.7px] w-[146.7px] h-[146.7px] pointer-events-none select-none z-40"
+            style={{ filter: LEMON_DOODLE_FILTER }}
+          />
+
+          {/* Bottom-Left Lemon Cone Doodle (Figma: x=95, y=701.6, w=188.9, h=188.9) */}
+          <img
+            src={doodleCone}
+            alt=""
+            aria-hidden="true"
+            className="absolute left-[95px] top-[701.6px] w-[188.9px] h-[188.9px] pointer-events-none select-none z-40"
+            style={{ filter: LEMON_DOODLE_FILTER }}
+          />
+
+          {/* Right Login Box (Exact Figma: x=741, y=120, w=579, h=784, rx=24) */}
+          <div className="absolute top-[120px] left-[741px] w-[579px] h-[784px] bg-white rounded-[24px] shadow-[0_25px_60px_rgba(0,0,0,0.12)] px-16 pt-[72px] pb-12 flex flex-col justify-between z-50">
+            <div>
+              {/* Eyebrow & Main Title */}
+              <span className="text-[#003BE2] font-semibold text-base block mb-2">Sign In</span>
+              <h2 className="text-[#242528] font-bold text-[36px] leading-[44px] tracking-tight mb-8">
+                Welcome Back
+              </h2>
+
+              {/* Feedback messages */}
               {error && (
-                <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
-                  <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                  <span>{error}</span>
+                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-xl font-medium">
+                  {error}
                 </div>
               )}
-
               {success && (
-                <div className="mb-6 p-4 rounded-xl bg-[#FDFFE4] border border-[#CBFC01] text-[#243300] text-sm flex items-center gap-2">
-                  <svg className="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="font-bold">Login successful! Redirecting to home...</span>
+                <div className="mb-6 p-3 bg-green-50 border border-green-200 text-green-700 text-xs rounded-xl font-medium flex items-center gap-2">
+                  <span>✓</span> Login successful! Redirecting...
                 </div>
               )}
 
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Inputs Form */}
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#4B4C53] mb-2">
-                    Email Address
-                  </label>
+                  <label className="block text-sm font-medium text-[#242528] mb-2">Email</label>
                   <input
                     type="email"
-                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="w-full px-4 py-3.5 rounded-xl bg-[#F5F5F6] border border-[#E5E6E8] text-[#242528] placeholder-[#82868E] text-sm focus:outline-none focus:ring-2 focus:ring-[#003BE2] focus:bg-white transition-all"
+                    placeholder="designer@example.com"
+                    required
+                    className="w-full h-[51px] px-4 rounded-[12px] border border-[#E5E6E8] text-[#242528] placeholder-[#9CA3AF] text-sm focus:outline-none focus:border-[#003BE2] focus:ring-1 focus:ring-[#003BE2] bg-white transition-colors"
                   />
                 </div>
 
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#4B4C53]">
-                      Password
-                    </label>
-                    <a
-                      href="#forgot"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        alert('Password reset link sent to registered email.');
-                      }}
-                      className="text-xs font-semibold text-[#003BE2] hover:underline"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••"
-                      className="w-full px-4 py-3.5 rounded-xl bg-[#F5F5F6] border border-[#E5E6E8] text-[#242528] placeholder-[#82868E] text-sm focus:outline-none focus:ring-2 focus:ring-[#003BE2] focus:bg-white transition-all pr-12"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#82868E] hover:text-[#242528] p-1"
-                      aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    >
-                      {showPassword ? (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                        </svg>
-                      ) : (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
+                  <label className="block text-sm font-medium text-[#242528] mb-2">Password</label>
                   <input
-                    id="remember-me"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="w-4 h-4 text-[#003BE2] rounded border-[#CED0D3] focus:ring-[#003BE2]"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="********"
+                    required
+                    className="w-full h-[51px] px-4 rounded-[12px] border border-[#E5E6E8] text-[#242528] placeholder-[#9CA3AF] text-sm focus:outline-none focus:border-[#003BE2] focus:ring-1 focus:ring-[#003BE2] bg-white transition-colors"
                   />
-                  <label htmlFor="remember-me" className="ml-2 text-xs font-medium text-[#585A62]">
-                    Remember me for 30 days
-                  </label>
                 </div>
 
-                <Button
-                  type="submit"
-                  variant="lime"
-                  size="lg"
-                  fullWidth
-                  disabled={loading}
-                  className="mt-2 py-3.5 font-bold shadow-lg shadow-[#CBFC01]/25 cursor-pointer"
-                >
-                  {loading ? 'Signing in...' : 'Sign In'}
-                </Button>
+                {/* Right-Aligned Pill Submit Button (Figma: w=104, h=46, rx=23, fill=#D4FB20) */}
+                <div className="flex justify-end pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-[104px] h-[46px] bg-[#D4FB20] hover:bg-[#c6ed18] text-[#172400] font-bold text-sm rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 disabled:opacity-50"
+                  >
+                    {loading ? (
+                      <span className="w-4 h-4 border-2 border-[#172400] border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      'Sign In'
+                    )}
+                  </button>
+                </div>
               </form>
 
-              {/* Social Login Options */}
-              <div className="mt-8">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-[#E5E6E8]" />
-                  </div>
-                  <div className="relative flex justify-center text-xs">
-                    <span className="px-3 bg-white text-[#82868E] uppercase tracking-wider font-semibold">
-                      Or sign in with
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEmail('alex@google.com');
-                      setPassword('demo1234');
-                    }}
-                    className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-[#E5E6E8] hover:bg-[#F5F5F6] transition-colors text-xs font-bold text-[#242528] cursor-pointer"
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                    </svg>
-                    Google
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEmail('alex@github.com');
-                      setPassword('demo1234');
-                    }}
-                    className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-[#E5E6E8] hover:bg-[#F5F5F6] transition-colors text-xs font-bold text-[#242528] cursor-pointer"
-                  >
-                    <svg className="w-4 h-4 fill-current text-[#242528]" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                    </svg>
-                    GitHub
-                  </button>
-                </div>
+              {/* Divider: "or" */}
+              <div className="mt-12 mb-8 flex items-center justify-center gap-4">
+                <div className="w-[140px] h-[1px] bg-[#D1D1D1]" />
+                <span className="text-sm text-[#888888] font-normal">or</span>
+                <div className="w-[140px] h-[1px] bg-[#D1D1D1]" />
               </div>
 
-              {/* Bottom switch link */}
-              <p className="mt-8 text-center text-xs text-[#82868E]">
-                Don't have an account?{' '}
-                <Link to="/signup" className="font-bold text-[#003BE2] hover:underline">
-                  Create account
-                </Link>
-              </p>
+              {/* Round Social Login Buttons (Facebook and Google) */}
+              <div className="flex items-center justify-center gap-4">
+                {/* Facebook Button (w=71, h=71, rx=23.5) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('designer@facebook.com');
+                    setPassword('demo1234');
+                  }}
+                  aria-label="Sign in with Facebook"
+                  className="w-[71px] h-[71px] rounded-[24px] border border-[#D1D1D1] hover:border-gray-400 bg-white flex items-center justify-center transition-all cursor-pointer hover:shadow-sm active:scale-95 text-black"
+                >
+                  <svg className="w-7 h-7" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M33.34 17C33.34 7.795 25.875 0.333 16.67 0.333C7.465 0.333 0 7.795 0 17C0 25.319 6.095 32.214 14.063 33.464V21.818H9.831V17H14.063V13.328C14.063 9.151 16.551 6.844 20.358 6.844C22.182 6.844 24.089 7.169 24.089 7.169V11.271H21.987C19.917 11.271 19.271 12.555 19.271 13.874V17H23.894L23.155 21.818H19.271V33.464C27.239 32.214 33.34 25.319 33.34 17Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+
+                {/* Google Button (w=71, h=71, rx=23.5) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('designer@google.com');
+                    setPassword('demo1234');
+                  }}
+                  aria-label="Sign in with Google"
+                  className="w-[71px] h-[71px] rounded-[24px] border border-[#D1D1D1] hover:border-gray-400 bg-white flex items-center justify-center transition-all cursor-pointer hover:shadow-sm active:scale-95 text-black"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M30.96 17.042C30.96 15.945 30.86 14.903 30.69 13.889H15V20.153H23.99C23.58 22.209 22.4 23.945 20.65 25.125V29.292H26.01C29.15 26.389 30.96 22.111 30.96 17.042Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15 6.597C17.46 6.597 17.65 7.445 21.39 9.097L26.14 4.347C23.26 1.653 19.5 0 15 0C8.49 0 2.86 3.75 0.13 9.195L5.65 13.486C6.97 9.528 10.65 6.597 15 6.597Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M15 33.334C8.49 33.334 2.86 29.584 0.13 24.139L5.65 19.847C6.97 23.806 10.65 26.736 15 26.736C17.25 26.736 19.15 26.125 20.65 25.125L26.01 29.292C23.26 31.792 19.5 33.334 15 33.334Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M0.13 9.195C-0.04 9.972 -0.13 10.792 -0.13 11.667C-0.13 12.542 -0.04 13.361 0.13 14.139L5.65 9.847C5.35 8.944 5.18 7.986 5.18 7C5.18 6.014 5.35 5.056 5.65 4.153L0.13 9.195Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
+
+            {/* Bottom Link: "New user? Create an account" */}
+            <p className="mt-8 text-center text-sm text-[#888888]">
+              New user?{' '}
+              <Link to="/signup" className="font-semibold text-[#003BE2] hover:underline">
+                Create an account
+              </Link>
+            </p>
           </div>
         </div>
-      </main>
 
-      {/* Footer copyright */}
-      <footer className="relative z-10 w-full text-center py-6 text-xs text-white/60">
-        © 2026 ByteSpace, Inc. All rights reserved.
-      </footer>
+        {/* MOBILE / TABLET VIEW (< xl screens) */}
+        <div className="xl:hidden w-full max-w-[579px] mx-auto py-8">
+          <div className="mb-6 text-center">
+            <h1 className="text-white font-bold text-2xl">Sign in with ease</h1>
+            <p className="text-white/80 text-sm mt-1">
+              Experience a seamless and efficient sign-in process.
+            </p>
+          </div>
+
+          <div className="w-full bg-white rounded-[24px] shadow-2xl px-6 sm:px-12 py-10">
+            <span className="text-[#003BE2] font-semibold text-sm block mb-1">Sign In</span>
+            <h2 className="text-[#242528] font-bold text-2xl tracking-tight mb-6">
+              Welcome Back
+            </h2>
+
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-xl font-medium">
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 text-xs rounded-xl font-medium">
+                ✓ Login successful! Redirecting...
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-[#242528] mb-1.5">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="designer@example.com"
+                  required
+                  className="w-full h-11 px-3.5 rounded-xl border border-[#E5E6E8] text-sm text-[#242528] placeholder-[#9CA3AF] focus:outline-none focus:border-[#003BE2]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#242528] mb-1.5">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="********"
+                  required
+                  className="w-full h-11 px-3.5 rounded-xl border border-[#E5E6E8] text-sm text-[#242528] placeholder-[#9CA3AF] focus:outline-none focus:border-[#003BE2]"
+                />
+              </div>
+
+              <div className="flex justify-end pt-2">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-28 h-11 bg-[#D4FB20] hover:bg-[#c6ed18] text-[#172400] font-bold text-sm rounded-full flex items-center justify-center cursor-pointer shadow-sm active:scale-95"
+                >
+                  {loading ? '...' : 'Sign In'}
+                </button>
+              </div>
+            </form>
+
+            <div className="my-6 flex items-center justify-center gap-3">
+              <div className="flex-1 h-[1px] bg-[#D1D1D1]" />
+              <span className="text-xs text-[#888888]">or</span>
+              <div className="flex-1 h-[1px] bg-[#D1D1D1]" />
+            </div>
+
+            <div className="flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail('designer@facebook.com');
+                  setPassword('demo1234');
+                }}
+                className="w-14 h-14 rounded-2xl border border-[#D1D1D1] flex items-center justify-center text-black hover:border-gray-400"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 34 34" fill="none">
+                  <path
+                    d="M33.34 17C33.34 7.795 25.875 0.333 16.67 0.333C7.465 0.333 0 7.795 0 17C0 25.319 6.095 32.214 14.063 33.464V21.818H9.831V17H14.063V13.328C14.063 9.151 16.551 6.844 20.358 6.844C22.182 6.844 24.089 7.169 24.089 7.169V11.271H21.987C19.917 11.271 19.271 12.555 19.271 13.874V17H23.894L23.155 21.818H19.271V33.464C27.239 32.214 33.34 25.319 33.34 17Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail('designer@google.com');
+                  setPassword('demo1234');
+                }}
+                className="w-14 h-14 rounded-2xl border border-[#D1D1D1] flex items-center justify-center text-black hover:border-gray-400"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 32 34" fill="none">
+                  <path
+                    d="M30.96 17.042C30.96 15.945 30.86 14.903 30.69 13.889H15V20.153H23.99C23.58 22.209 22.4 23.945 20.65 25.125V29.292H26.01C29.15 26.389 30.96 22.111 30.96 17.042Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M15 6.597C17.46 6.597 17.65 7.445 21.39 9.097L26.14 4.347C23.26 1.653 19.5 0 15 0C8.49 0 2.86 3.75 0.13 9.195L5.65 13.486C6.97 9.528 10.65 6.597 15 6.597Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M15 33.334C8.49 33.334 2.86 29.584 0.13 24.139L5.65 19.847C6.97 23.806 10.65 26.736 15 26.736C17.25 26.736 19.15 26.125 20.65 25.125L26.01 29.292C23.26 31.792 19.5 33.334 15 33.334Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M0.13 9.195C-0.04 9.972 -0.13 10.792 -0.13 11.667C-0.13 12.542 -0.04 13.361 0.13 14.139L5.65 9.847C5.35 8.944 5.18 7.986 5.18 7C5.18 6.014 5.35 5.056 5.65 4.153L0.13 9.195Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <p className="mt-6 text-center text-xs text-[#888888]">
+              New user?{' '}
+              <Link to="/signup" className="font-semibold text-[#003BE2] hover:underline">
+                Create an account
+              </Link>
+            </p>
+          </div>
+        </div>
+
+      </main>
     </div>
   );
 };
