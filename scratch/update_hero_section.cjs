@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+const fs = require('fs');
+
+const fileContent = `import React, { useState } from 'react';
 import figmaHeroStudent from '../../../assets/images/figma-hero-student.png';
 import doodleZigzagLeft from '../../../assets/images/figma-hero-doodle-zigzag-left.png';
 import doodleTorusLeft from '../../../assets/images/figma-hero-doodle-torus-left.png';
@@ -19,7 +21,7 @@ const LEMON_FILTER =
 
 // CSS filter for crisp clean pure white 3D doodles
 const WHITE_DOODLE_FILTER = 'brightness(1.55) contrast(1.1) drop-shadow(0 15px 25px rgba(0,0,0,0.18))';
-const LEMON_DOODLE_FILTER = `${LEMON_FILTER} drop-shadow(0 20px 30px rgba(0,0,0,0.18))`;
+const LEMON_DOODLE_FILTER = \`\${LEMON_FILTER} drop-shadow(0 20px 30px rgba(0,0,0,0.18))\`;
 
 export interface HeroSectionProps {
   onSearch?: (query: string) => void;
@@ -234,3 +236,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/landing/components/HeroSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated HeroSection.tsx');

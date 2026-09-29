@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const fileContent = `import React from 'react';
 import doodleZigzagTopLeft from '../../../assets/images/figma-hero-doodle-zigzag-left.png';
 import doodleSpringTopLeft from '../../../assets/images/figma-hero-doodle-zigzag-left.png';
 import doodleConeMidLeft from '../../../assets/images/promo-pattern76_1_1067.png';
@@ -13,7 +15,7 @@ const LEMON_FILTER =
 
 // Filter for crisp clean pure white 3D objects matching Figma
 const WHITE_DOODLE_FILTER = 'brightness(1.55) contrast(1.1) drop-shadow(0 15px 25px rgba(0,0,0,0.18))';
-const LEMON_DOODLE_FILTER = `${LEMON_FILTER} drop-shadow(0 20px 30px rgba(0,0,0,0.18))`;
+const LEMON_DOODLE_FILTER = \`\${LEMON_FILTER} drop-shadow(0 20px 30px rgba(0,0,0,0.18))\`;
 
 export interface PromoCtaSectionProps {
   onCtaClick?: () => void;
@@ -133,3 +135,7 @@ export const PromoCtaSection: React.FC<PromoCtaSectionProps> = ({ onCtaClick }) 
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/landing/components/PromoCtaSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated PromoCtaSection.tsx');

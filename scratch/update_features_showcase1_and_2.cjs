@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const fileContent = `import React from 'react';
 import heroStudent from '../../../assets/images/figma-hero-student.png';
 import showcase1Doodle from '../../../assets/images/figma-showcase1-doodle.png';
 import creatorStudent from '../../../assets/images/figma-creator-pattern58_1_1067.png';
@@ -315,3 +317,7 @@ export const FeaturesSection: React.FC = () => {
     </section>
   );
 };
+`;
+
+fs.writeFileSync('src/features/landing/components/FeaturesSection.tsx', fileContent, 'utf8');
+console.log('Successfully updated FeaturesSection.tsx with Showcase 1 fixes and gap reduction');
