@@ -2,12 +2,8 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
-import { AuthModal } from '../features/auth';
-import { useAuthContext } from '../context';
 
 export const RootLayout: React.FC = () => {
-  const { authModalOpen, authModalMode, closeAuthModal } = useAuthContext();
-
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#242528] selection:bg-[#CBFC01] selection:text-[#172400]">
       {/* Global Navbar */}
@@ -20,13 +16,6 @@ export const RootLayout: React.FC = () => {
 
       {/* Global Footer */}
       <Footer />
-
-      {/* Global Auth Modal */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authModalMode}
-        onClose={closeAuthModal}
-      />
     </div>
   );
 };
