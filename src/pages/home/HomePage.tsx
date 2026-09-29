@@ -17,7 +17,7 @@ import type { Course } from '../../types';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('featured');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [enrollSuccessMessage, setEnrollSuccessMessage] = useState<string | null>(null);
@@ -25,7 +25,9 @@ export const HomePage: React.FC = () => {
   // Filter courses by category and optional search query
   const displayedCourses = mockCourses.filter((course) => {
     const matchesCategory =
-      activeCategory === 'all' || course.category === activeCategory;
+      activeCategory === 'featured' ||
+      activeCategory === 'all' ||
+      course.category === activeCategory;
     const matchesSearch =
       !searchQuery ||
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
