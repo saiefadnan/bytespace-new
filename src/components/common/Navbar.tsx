@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ByteSpaceLogo } from './ByteSpaceLogo';
-import { Button } from './Button';
 
 export interface NavbarProps {
   onOpenLogin?: () => void;
@@ -34,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  const handleGetStartedClick = () => {
+  const handleJoinUsClick = () => {
     if (onOpenSignup) {
       onOpenSignup();
     } else {
@@ -42,13 +41,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  // Exactly 3 center links as specified in Figma: Home, Courses, Creators
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Explore', href: '/search' },
     { label: 'Courses', href: '/#courses' },
-    { label: 'Why Us', href: '/#features' },
-    { label: 'Mentors', href: '/#mentors' },
-    { label: 'Reviews', href: '/#testimonials' },
+    { label: 'Creators', href: '/creators' },
   ];
 
   return (
@@ -67,35 +64,47 @@ export const Navbar: React.FC<NavbarProps> = ({
           <ByteSpaceLogo theme="light" size="md" />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+        {/* Center: Exactly Home, Courses, Creators */}
+        <nav className="hidden md:flex items-center gap-10" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-white/85 hover:text-[#CBFC01] font-medium text-sm transition-colors duration-150 relative py-1"
+              className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors duration-150 py-1"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Action Buttons (Sign In / Register) */}
-        <div className="hidden sm:flex items-center gap-3.5">
+        {/* Right: Sign In, Join Us, and Shopping Bag Icon */}
+        <div className="hidden sm:flex items-center gap-7">
           <button
             onClick={handleSignInClick}
-            className="text-white hover:text-[#CBFC01] font-semibold text-sm px-4 py-2 transition-colors cursor-pointer"
+            className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors cursor-pointer"
           >
             Sign In
           </button>
-          <Button
-            variant="lime"
-            size="sm"
-            onClick={handleGetStartedClick}
-            className="px-5 py-2 font-bold text-xs"
+          <button
+            onClick={handleJoinUsClick}
+            className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors cursor-pointer"
           >
-            Get Started
-          </Button>
+            Join Us
+          </button>
+          {/* Authentic Shopping Bag Icon from Figma */}
+          <Link
+            to="/search"
+            aria-label="Shopping Cart"
+            className="text-white/90 hover:text-[#CBFC01] transition-colors p-1"
+          >
+            <svg
+              className="w-5 h-5 fill-current"
+              viewBox="0 0 16 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M14 4H12C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4H2C0.9 4 0 4.9 0 6V18C0 19.1 0.9 20 2 20H14C15.1 20 16 19.1 16 18V6C16 4.9 15.1 4 14 4ZM8 2C9.1 2 10 2.9 10 4H6C6 2.9 6.9 2 8 2ZM14 18H2V6H4V8C4 8.55 4.45 9 5 9C5.55 9 6 8.55 6 8V6H10V8C10 8.55 10.45 9 11 9C11.55 9 12 8.55 12 8V6H14V18Z" />
+            </svg>
+          </Link>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -129,27 +138,38 @@ export const Navbar: React.FC<NavbarProps> = ({
               </a>
             ))}
           </nav>
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 handleSignInClick();
               }}
-              className="text-white font-semibold text-sm py-2 text-left"
+              className="text-white font-medium text-sm"
             >
               Sign In
             </button>
-            <Button
-              variant="lime"
-              size="md"
-              fullWidth
+            <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                handleGetStartedClick();
+                handleJoinUsClick();
               }}
+              className="text-white font-medium text-sm"
             >
-              Get Started
-            </Button>
+              Join Us
+            </button>
+            <Link
+              to="/search"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white p-1"
+            >
+              <svg
+                className="w-5 h-5 fill-current"
+                viewBox="0 0 16 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M14 4H12C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4H2C0.9 4 0 4.9 0 6V18C0 19.1 0.9 20 2 20H14C15.1 20 16 19.1 16 18V6C16 4.9 15.1 4 14 4ZM8 2C9.1 2 10 2.9 10 4H6C6 2.9 6.9 2 8 2ZM14 18H2V6H4V8C4 8.55 4.45 9 5 9C5.55 9 6 8.55 6 8V6H10V8C10 8.55 10.45 9 11 9C11.55 9 12 8.55 12 8V6H14V18Z" />
+              </svg>
+            </Link>
           </div>
         </div>
       )}

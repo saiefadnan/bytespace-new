@@ -80,14 +80,48 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
 }
 
-/* 12-Column Figma Max Container */
+/* Figma Layout Grid: 1440px canvas | 12 Columns | 120px Margin | 40px Gutter */
+:root {
+  --figma-margin: 120px;
+  --figma-gutter: 40px;
+  --figma-content-width: 1200px; /* 1440px - (2 * 120px) = 1200px */
+}
+
 .bytespace-container {
   width: 100%;
-  max-width: 1152px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1rem, 4vw, 2rem);
-  padding-right: clamp(1rem, 4vw, 2rem);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .bytespace-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bytespace-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bytespace-container {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+/* 12-Column Grid Utility with 40px Gutter */
+.figma-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 40px;
 }
 
 /* Reusable UI Utility Classes */

@@ -5,14 +5,15 @@ import { Footer } from '../../components/common/Footer';
 import {
   HeroSection,
   PartnersStrip,
+  CategoriesSection,
   FeaturesSection,
   PromoCtaSection,
   TestimonialsSection,
 } from '../../features/landing';
 import { PopularCoursesSection, CourseDetailsModal } from '../../features/courses';
-import { MentorsSection } from '../../features/creators';
 import { AuthModal } from '../../features/auth';
 import { mockCourses, mockCategories } from '../../data';
+
 import type { Course } from '../../types';
 
 export const HomePage: React.FC = () => {
@@ -101,16 +102,16 @@ export const HomePage: React.FC = () => {
           onSelectCourse={(course) => setSelectedCourse(course)}
         />
 
-        {/* 4. Features: Real Skills for Real World */}
+        {/* 4. Course Categories */}
+        <CategoriesSection />
+
+        {/* 5. Features: Real Skills for Real World */}
         <FeaturesSection />
 
-        {/* 5. Mentors Section */}
-        <MentorsSection />
-
-        {/* 6. High-Energy Call to Action Banner */}
+        {/* 5. High-Energy Call to Action Banner */}
         <PromoCtaSection onCtaClick={() => navigate('/signup')} />
 
-        {/* 7. Student Testimonials */}
+        {/* 6. Student Testimonials */}
         <TestimonialsSection />
       </main>
 
