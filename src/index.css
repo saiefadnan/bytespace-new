@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Poppins', system-ui, sans-serif;
-  --font-sans: 'Satoshi', 'Poppins', system-ui, sans-serif;
+  --font-display: 'Satoshi', system-ui, sans-serif;
+  --font-sans: 'Satoshi', system-ui, sans-serif;
 
   /* Figma Palette - Royal Blues */
   --color-blue-50: #E7F6FF;
