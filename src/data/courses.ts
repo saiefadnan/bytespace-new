@@ -12,7 +12,7 @@ import avatar3 from '../assets/images/avatar-3.png';
 import avatar4 from '../assets/images/avatar-4.png';
 import avatar5 from '../assets/images/avatar-5.png';
 
-export const mockCourses: Course[] = [
+const baseCourses: Course[] = [
   {
     id: 'course-1',
     title: 'Learn Figma from Basic',
@@ -85,7 +85,7 @@ export const mockCourses: Course[] = [
     category: 'data',
     level: 'Beginner',
     thumbnail: courseAnalytics,
-    rating: 4.5,
+    rating: 4.6,
     reviewCount: 2150,
     duration: '2 hours 16 mins',
     lessonsCount: 17,
@@ -108,7 +108,7 @@ export const mockCourses: Course[] = [
     category: 'dev',
     level: 'Beginner',
     thumbnail: courseProductivity,
-    rating: 4.5,
+    rating: 4.6,
     reviewCount: 840,
     duration: '2 hours 16 mins',
     lessonsCount: 17,
@@ -131,7 +131,7 @@ export const mockCourses: Course[] = [
     category: 'data',
     level: 'Beginner',
     thumbnail: courseFinance,
-    rating: 4.5,
+    rating: 4.8,
     reviewCount: 1120,
     duration: '2 hours 16 mins',
     lessonsCount: 17,
@@ -154,7 +154,7 @@ export const mockCourses: Course[] = [
     category: 'management',
     level: 'Beginner',
     thumbnail: courseTeamSprint,
-    rating: 4.5,
+    rating: 4.8,
     reviewCount: 1670,
     duration: '2 hours 16 mins',
     lessonsCount: 17,
@@ -170,4 +170,19 @@ export const mockCourses: Course[] = [
     isPopular: true,
     description: 'Learn modern lean startup methods, rapid customer validation, cross-functional sprints, and pitch deck execution.',
   },
+];
+
+// Exactly 18 courses matching the 6 rows x 3 columns Figma Search Page layout
+export const mockCourses: Course[] = [
+  ...baseCourses,
+  ...baseCourses.map((c, index) => ({
+    ...c,
+    id: `course-${index + 7}`,
+    slug: `${c.slug}-${index + 7}`,
+  })),
+  ...baseCourses.map((c, index) => ({
+    ...c,
+    id: `course-${index + 13}`,
+    slug: `${c.slug}-${index + 13}`,
+  })),
 ];

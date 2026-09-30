@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   // Exactly 3 center links as specified in Figma: Home, Courses, Creators
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Courses', href: '/#courses' },
+    { label: 'Courses', href: '/search' },
     { label: 'Creators', href: '/creators' },
   ];
 
@@ -46,13 +46,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Center: Exactly Home, Courses, Creators */}
         <nav className="hidden md:flex items-center gap-10" aria-label="Main Navigation">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className="text-white/90 hover:text-[#CBFC01] font-medium text-sm transition-colors duration-150 py-1"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -107,14 +107,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="md:hidden bg-[#0030B8] border-t border-white/10 px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-white/90 hover:text-[#CBFC01] font-medium text-base py-1.5 transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="pt-4 border-t border-white/10 flex items-center justify-between">
