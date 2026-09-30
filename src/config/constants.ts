@@ -3,7 +3,6 @@ export const APP_CONFIG = {
   title: 'ByteSpace - Modern Tech & Design Learning Platform',
   description: 'Master high-income digital skills with industry-leading mentors.',
   candidate: 'Saief Md. Hossain Adnan',
-  trackingId: '03cb2890-63c9-4ab9-a1e2-fbdae94a99c3',
   supportEmail: 'hello@bytespace.io',
 } as const;
 
