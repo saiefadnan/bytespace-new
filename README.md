@@ -9,7 +9,6 @@
 
 > Frontend Assessment Submission for **Doin Tech Limited**  
 > **Candidate**: Saief Md. Hossain Adnan  
-> **Tracking ID**: `03cb2890-63c9-4ab9-a1e2-fbdae94a99c3`  
 > **Position**: Jr. Software Engineer (Frontend)  
 > **Figma Design Reference**: [ByteSpace New Check website](https://www.figma.com/design/wkOtUok2kq1hwZY8hCnBAN/ByteSpace-New-Check-website--Copy-?node-id=0-1&p=f&t=jmqJqOeRGl3Xayfo-0)
 

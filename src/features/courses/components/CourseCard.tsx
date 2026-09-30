@@ -57,8 +57,8 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect, onClic
       <div className="pt-3.5 flex-1 flex flex-col justify-between">
         <div>
           {/* Title & Rating Row */}
-          <div className="flex items-center justify-between gap-2">
-            <h3 className="font-bold text-[18px] text-[#1A1A1A] leading-tight line-clamp-1 group-hover:text-[#003BE2] transition-colors">
+          <div className="flex items-center justify-between gap-2 min-w-0">
+            <h3 className="font-bold text-[18px] text-[#1A1A1A] leading-tight truncate min-w-0 group-hover:text-[#003BE2] transition-colors">
               {course.title}
             </h3>
             <div className="flex items-center gap-1 flex-shrink-0 text-[15px] font-bold text-[#4F4F4F]">
