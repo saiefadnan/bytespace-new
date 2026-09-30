@@ -111,7 +111,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* 3. Header Text & Search Content */}
       <div className="bytespace-container relative z-20 flex flex-col items-center text-center">
         {/* Main Headline - Both Lines Pure White matching Figma */}
-        <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[4rem] text-white tracking-tight leading-[1.12] max-w-4xl mx-auto">
+        <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-[4rem] text-white tracking-tight leading-[1.12] max-w-4xl mx-auto">
           Get Access to Hundreds <br />
           Courses Available
         </h1>

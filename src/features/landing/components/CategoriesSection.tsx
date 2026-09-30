@@ -68,12 +68,11 @@ export const CategoriesSection: React.FC = () => {
     <section className="bg-white py-20 sm:py-24 border-b border-[#E5E6E8]">
       <div className="bytespace-container">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#242528] tracking-tight leading-tight mb-4">
-            Explore Diverse Learning Paths{' '}
-            <span className="text-[#003BE2]">at Bytespace</span>
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#040819] tracking-tight leading-tight mb-4">
+            Explore Diverse Learning Paths at Bytespace
           </h2>
-          <p className="text-[#585A62] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#82868E] text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
             At Bytespace, we believe in empowering individuals through knowledge. Our diverse range
             of courses spans various fields, ensuring there&apos;s something for everyone. Unleash
             your potential and explore our carefully curated categories.

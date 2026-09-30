@@ -32,7 +32,7 @@ export const PopularCoursesSection: React.FC<PopularCoursesSectionProps> = ({
       <div className="bytespace-container">
         {/* Section Header matching Figma */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] text-[#040819] tracking-tight leading-[1.2] mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-[2.75rem] text-[#040819] tracking-tight leading-[1.2] mb-4">
             Discover Your Passion, <br className="hidden sm:inline" />
             Build Your Skills
           </h2>
