@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import type { Course } from '../types';
 import studentAvatar1 from '../../../assets/images/student-avatar-1.png';
 import studentAvatar2 from '../../../assets/images/student-avatar-2.png';
@@ -72,9 +72,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect, onClic
           {/* Instructor Byline */}
           <div className="mt-1">
             <span className="text-xs text-[#4F4F4F]">by </span>
-            <span className="text-xs font-semibold text-[#003BE2] hover:underline">
+            <Link
+              to="/creators"
+              onClick={(e) => e.stopPropagation()}
+              className="text-xs font-semibold text-[#003BE2] hover:underline"
+            >
               {course.instructor.name}
-            </span>
+            </Link>
           </div>
         </div>
 

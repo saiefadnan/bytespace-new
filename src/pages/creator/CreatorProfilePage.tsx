@@ -42,10 +42,10 @@ export const CreatorProfilePage: React.FC = () => {
     setSortBy('relevant');
   };
 
-  // PurePearl Studio's 3 courses matching Figma specs
+  // PurePearl Studio's 6 courses matching Figma specs
   const creatorCourses = useMemo(() => {
     return mockCourses
-      .slice(0, 3)
+      .slice(0, 6)
       .filter((c) => {
         const matchesLevel = selectedLevel === 'all' || c.level === selectedLevel;
         const matchesCategory = selectedCategory === 'all' || c.category === selectedCategory;
@@ -121,9 +121,9 @@ export const CreatorProfilePage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4">
             {/* Left Badges */}
             <div className="flex items-center gap-4">
-              {/* 3 Products Pill: 140px x 46px, rx 23px */}
+              {/* 6 Products Pill: 140px x 46px, rx 23px */}
               <div className="h-[46px] px-6 rounded-full bg-white text-[#242528] text-sm font-normal flex items-center shadow-xs select-none">
-                <span className="font-bold mr-1.5">3</span> Products
+                <span className="font-bold mr-1.5">6</span> Products
               </div>
 
               {/* 12 Followers Pill: 150px x 46px, rx 23px */}
